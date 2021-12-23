@@ -28,9 +28,6 @@
         "sweetalert2": "^11.3.0"
     },
     "dependencies": {
-        "ckeditor": "^4.12.1",
-        "ckeditor4": "^4.17.1",
-        "ckeditor5": "^31.1.0",
         "jquery": "^3.6.0"
     }
 }
