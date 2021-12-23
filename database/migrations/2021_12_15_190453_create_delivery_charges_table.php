@@ -15,6 +15,12 @@ class CreateDeliveryChargesTable extends Migration
     {
         Schema::create('delivery_charges', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('service');
+            $table->foreign('service')->references('id')->on('delivery_services')->onDelete('cascade');
+            $table->unsignedBigInteger('package');
+            $table->foreign('package')->references('id')->on('package_sizes')->onDelete('cascade');
+            $table->unsignedBigInteger('price');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

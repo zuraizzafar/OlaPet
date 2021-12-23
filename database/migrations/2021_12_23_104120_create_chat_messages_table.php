@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateChatMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,13 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
+            $table->text('message');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('total');
-            $table->unsignedBigInteger('coupon_id');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
-            $table->unsignedBigInteger('updated_total');
-            $table->unsignedBigInteger('address_id');
-            $table->foreign('address_id')->references('id')->on('user_addresses')->onDelete('cascade');
-            $table->tinyInteger('delivery');
-            $table->tinyInteger('payment');
+            $table->unsignedBigInteger('chat_id');
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
@@ -37,6 +32,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('chat_messages');
     }
 }

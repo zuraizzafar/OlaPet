@@ -15,6 +15,13 @@ class CreateVariationsTable extends Migration
     {
         Schema::create('variations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('package_id');
+            $table->foreign('package_id')->references('id')->on('package_sizes');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

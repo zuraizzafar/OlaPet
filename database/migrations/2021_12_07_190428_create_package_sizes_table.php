@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAddressesTable extends Migration
+class CreatePackageSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateUserAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('package_sizes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('dimension');
+            $table->unsignedBigInteger('weight');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateUserAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('package_sizes');
     }
 }

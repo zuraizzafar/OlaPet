@@ -15,6 +15,9 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('ad_id')->nullable();
+            $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
