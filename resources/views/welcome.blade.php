@@ -8,6 +8,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Home') }}</div>
+                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
                 </div>
             </div>
         </div>
