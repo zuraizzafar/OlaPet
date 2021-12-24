@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('type')->comment('0: buyer, 1; seller, 2:admin');
             $table->unsignedBigInteger('image')->nullable();
+            $table->foreign('image')->references('id')->on('media');
             $table->timestamps();
         });
     }
