@@ -3,14 +3,14 @@
 @section('title', 'Home')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Home') }}</div>
-                        <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-                </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Home') }}</div>
+                <textarea class="wysiwyg"></textarea>
             </div>
         </div>
     </div>
+</div>
 @endsection
