@@ -6,6 +6,8 @@ window.Swal = Swal;
 import * as FilePond from 'filepond';
 window.FilePond = FilePond;
 
+import 'jquery-ui/ui/widgets/datepicker.js';
+
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
 
 // ref: https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/#document-ready
