@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@yield('title', 'Home')
+@section('title', 'Home')
 
 @section('content')
     <div class="container">

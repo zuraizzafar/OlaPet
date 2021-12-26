@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('type')->comment('0: buyer, 1; seller, 2:admin');
+            $table->tinyInteger('type')->default(0)->comment('0: buyer, 1; seller, 2:admin');
             $table->unsignedBigInteger('image')->nullable();
             $table->timestamps();
         });
