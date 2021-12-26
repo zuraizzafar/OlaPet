@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Ecommerce Soloution') - {{ config('app.name', 'Amaraz') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -15,6 +16,9 @@
 
 <body>
     <div id="app">
+        <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 bg-white justify-content-center align-items-center">
+            <lottie-player src="{{ asset('lottiefiles/loader.json') }}"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
+        </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -73,7 +77,7 @@
         </main>
     </div>
 
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
 </body>
 
 </html>
