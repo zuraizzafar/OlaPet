@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Ecommerce Soloution') - {{ config('app.name', 'Amaraz') }}</title>
+    <title>@yield('title', 'Pet Shop') - {{ config('app.name', 'OlaPet') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
