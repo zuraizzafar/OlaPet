@@ -1,5 +1,10 @@
 <?php
+
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
+
 $ui_mode = session('ui_mode', 'light');
+$notifications = Notification::where('target', Auth::user()->type??0)->get();
 ?>
 
 <!doctype html>
@@ -25,7 +30,7 @@ $ui_mode = session('ui_mode', 'light');
         <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-sm' }} @else {{ 'navbar-dark bg-dark shadow' }} @endif sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ route('home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
                     <form action="" class="search-ads-form">
@@ -61,12 +66,25 @@ $ui_mode = session('ui_mode', 'light');
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell fs-4 mx-1"></i></a>
 
-                            <ul class="dropdown-menu dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="javascript:void(0)">
+                            <ul class="notifification-dropdown dropdown-menu dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
+                                @if(count($notifications))
+                                    @foreach($notifications as $notification)
+                                    <li class="text-right mx-1 px-2 border-bottom">
+                                        <span class="d-block">
+                                            {{ $notification->notification }}
+                                        </span>
+                                        <small class="d-block text-muted">
+                                            {{ date( 'h:i a M, Y', strtotime($notification->updated_at)) }}
+                                        </small>
+                                    </li>
+                                    @endforeach
+                                @else
+                                <li class="text-center">
+                                    <small>
                                         No notifications found.
-                                    </a>
+                                    </small>
                                 </li>
+                                @endif
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -81,10 +99,10 @@ $ui_mode = session('ui_mode', 'light');
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item me-3">
                             <a class="nav-link" href="{{ route('ui_mode') }}">
-                                @if($ui_mode=='dark') 
-                                    <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
+                                @if($ui_mode=='dark')
+                                <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
                                 @else
-                                    <i class="bi bi-moon-fill fs-4 mx-1 lh-1"></i>
+                                <i class="bi bi-moon-fill fs-4 mx-1 lh-1"></i>
                                 @endif
                             </a>
                         </li>
