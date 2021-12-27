@@ -58,8 +58,16 @@ $ui_mode = session('ui_mode', 'light');
                                 <i class="fas fa-plus-square fs-4 mx-1"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=""><i class="fas fa-bell fs-4 mx-1"></i></a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell fs-4 mx-1"></i></a>
+
+                            <ul class="dropdown-menu dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)">
+                                        No notifications found.
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">
