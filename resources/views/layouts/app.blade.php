@@ -19,10 +19,10 @@ $ui_mode = session('ui_mode', 'light');
 
 <body class="@if($ui_mode=='dark') {{ 'bg-dark-seconday' }} @endif">
     <div id="app">
-        <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 bg-white justify-content-center align-items-center">
+        <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 @if($ui_mode=='dark') {{ 'bg-dark' }} @else {{ 'bg-white' }} @endif justify-content-center align-items-center">
             <lottie-player src="{{ asset('lottiefiles/loader.json') }}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
         </div>
-        <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white  shadow-md' }} @else {{ 'navbar-dark bg-dark  shadow-lg' }} @endif">
+        <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-md' }} @else {{ 'navbar-dark bg-dark shadow-lg' }} @endif sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -123,7 +123,7 @@ $ui_mode = session('ui_mode', 'light');
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
