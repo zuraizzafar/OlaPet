@@ -14,12 +14,11 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps()
-    .browserSync({
-        proxy: 'app:80',
-        open: false,
-        port: 8081
-    })
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery']
     })
     ;
+mix.browserSync({
+    proxy: 'http://127.0.0.1:8000',
+    open: false
+})

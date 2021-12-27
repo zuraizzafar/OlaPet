@@ -4,6 +4,6 @@
 
 @section('content')
 <div class="container-fluid">
-
+    &nbsp;
 </div>
 @endsection
