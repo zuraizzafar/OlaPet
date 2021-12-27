@@ -23,3 +23,14 @@ Route::get('/dummy', [ProductController::class, 'index'])->name('index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/change-mode', function() {
+    $ui_mode = session('ui_mode');
+    if($ui_mode == "light") {
+        session(['ui_mode' => 'dark']);
+    }
+    else {
+        session(['ui_mode' => 'light']);
+    }
+    return redirect()->back();
+})->name('ui_mode');

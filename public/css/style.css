@@ -2,3 +2,7 @@
     z-index: 99;
     display: flex;
 }
+
+.bg-dark-seconday {
+    background-color: #1c1c1e !important;
+}

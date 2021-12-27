@@ -1,3 +1,7 @@
+<?php
+$ui_mode = session('ui_mode', 'light');
+?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -7,19 +11,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Pet Shop') - {{ config('app.name', 'OlaPet') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body>
+<body class="@if($ui_mode=='dark') {{ 'bg-dark-seconday' }} @endif">
     <div id="app">
         <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 bg-white justify-content-center align-items-center">
             <lottie-player src="{{ asset('lottiefiles/loader.json') }}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
         </div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white  shadow-md' }} @else {{ 'navbar-dark bg-dark  shadow-lg' }} @endif">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -45,35 +48,38 @@
                     <!-- Center Right Of Navbar -->
                     <ul class="navbar-nav mx-auto">
                         @if(Auth::user())
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    <i class="bi bi-stickies-fill fs-4 mx-1 lh-1"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    <i class="fas fa-plus-square fs-4 mx-1"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href=""><i class="fas fa-bell fs-4 mx-1"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    <i class="bi bi-chat-text-fill fs-4 mx-1 lh-1"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    <!-- <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i> -->
-                                    <i class="bi bi-moon-fill fs-4 mx-1 lh-1"></i>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="bi bi-stickies-fill fs-4 mx-1 lh-1"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="fas fa-plus-square fs-4 mx-1"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><i class="fas fa-bell fs-4 mx-1"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="bi bi-chat-text-fill fs-4 mx-1 lh-1"></i>
+                            </a>
+                        </li>
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item me-3">
+                            <a class="nav-link" href="{{ route('ui_mode') }}">
+                                @if($ui_mode=='dark') 
+                                    <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
+                                @else
+                                    <i class="bi bi-moon-fill fs-4 mx-1 lh-1"></i>
+                                @endif
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center" href="">
                                 <i class="fas fa-store fs-4 me-2"></i>
