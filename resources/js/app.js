@@ -25,3 +25,5 @@ ready(() => {
 
 import {owlCarousel} from "owlcarousel/owl-carousel/owl.carousel";
 window.owlCarousel = owlCarousel;
+
+import * as lottiePlayer from "@lottiefiles/lottie-player/dist/lottie-player";
