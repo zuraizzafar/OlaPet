@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/dummy', [ProductController::class, 'index'])->name('index');
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

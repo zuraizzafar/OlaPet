@@ -22,9 +22,9 @@ $ui_mode = session('ui_mode', 'light');
         <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 @if($ui_mode=='dark') {{ 'bg-dark' }} @else {{ 'bg-white' }} @endif justify-content-center align-items-center">
             <lottie-player src="{{ asset('lottiefiles/loader.json') }}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
         </div>
-        <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-md' }} @else {{ 'navbar-dark bg-dark shadow-lg' }} @endif sticky-top">
+        <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-sm' }} @else {{ 'navbar-dark bg-dark shadow' }} @endif sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand col-4 col-md-2" href="{{ url('/') }}">
+                <a class="navbar-brand col-4 col-md-2" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
@@ -105,7 +105,7 @@ $ui_mode = session('ui_mode', 'light');
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -123,7 +123,7 @@ $ui_mode = session('ui_mode', 'light');
             </div>
         </nav>
 
-        <main>
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

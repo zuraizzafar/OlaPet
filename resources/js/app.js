@@ -15,15 +15,15 @@ var ready = (callback) => {
   else document.addEventListener("DOMContentLoaded", callback);
 }
 
-ready(() => { 
-    ClassicEditor
-        .create(document.querySelector('.wysiwyg'))
-        .catch(error => {
-            console.log(`error`, error)
-        });
+ready(() => {
+  ClassicEditor
+    .create(document.querySelector('.wysiwyg'))
+    .catch(error => {
+      console.log(`error`, error)
+    });
 });
 
-import {owlCarousel} from "owlcarousel/owl-carousel/owl.carousel";
+import { owlCarousel } from "owlcarousel/owl-carousel/owl.carousel";
 window.owlCarousel = owlCarousel;
 
-import * as lottiePlayer from "@lottiefiles/lottie-player/dist/lottie-player";
+import "@lottiefiles/lottie-player/dist/lottie-player";
