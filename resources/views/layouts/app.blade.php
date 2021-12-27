@@ -4,7 +4,7 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 $ui_mode = session('ui_mode', 'light');
-$notifications = Notification::where('target', Auth::user()->type??0)->get();
+$notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->get();
 ?>
 
 <!doctype html>
