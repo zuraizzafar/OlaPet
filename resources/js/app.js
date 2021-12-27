@@ -22,3 +22,6 @@ ready(() => {
             console.log(`error`, error)
         });
 });
+
+import {owlCarousel} from "owlcarousel/owl-carousel/owl.carousel";
+window.owlCarousel = owlCarousel;

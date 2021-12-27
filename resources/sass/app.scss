@@ -1,12 +1,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+// Variables
+@import 'variables';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
-
-// Variables
-@import 'variables';
 
 // Font-Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
@@ -22,3 +22,7 @@
 @import "~filepond/dist/filepond.min.css";
 
 @import '~jquery-ui/themes/base/all.css';
+
+@import '~owlcarousel/owl-carousel/owl.carousel.css';
+@import '~owlcarousel/owl-carousel/owl.theme.css';
+@import '~owlcarousel/owl-carousel/owl.transitions.css';

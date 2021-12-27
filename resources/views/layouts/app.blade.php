@@ -65,7 +65,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">
-                                    <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
+                                    <!-- <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i> -->
+                                    <i class="bi bi-moon-fill fs-4 mx-1 lh-1"></i>
                                 </a>
                             </li>
                         @endif

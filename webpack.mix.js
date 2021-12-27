@@ -19,4 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
         open: false,
         port: 8081
     })
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery']
+    })
     ;
