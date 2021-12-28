@@ -69,12 +69,12 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->ge
                             <ul class="notifification-dropdown dropdown-menu dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(count($notifications))
                                     @foreach($notifications as $notification)
-                                    <li class="text-right mx-1 px-2 border-bottom">
+                                    <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
                                         <span class="d-block">
                                             {{ $notification->notification }}
                                         </span>
                                         <small class="d-block text-muted">
-                                            {{ date( 'h:i a M, Y', strtotime($notification->updated_at)) }}
+                                            {{ date( 'M d, Y', strtotime($notification->updated_at)) }}
                                         </small>
                                     </li>
                                     @endforeach
@@ -169,6 +169,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->ge
     </div>
 
     <script src="{{ asset('js/script.js') }}" defer></script>
+    @include('js.notifications')
 </body>
 
 </html>

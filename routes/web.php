@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 
@@ -18,7 +18,7 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/change-mode', function() {
     $ui_mode = session('ui_mode', 'light');
@@ -30,6 +30,8 @@ Route::get('/change-mode', function() {
     }
     return redirect()->back();
 })->name('ui_mode');
+
+Route::post('/get-notifications', [NotificationController::class, 'index'])->name('get_notifications');
 
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
 

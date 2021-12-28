@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->text('notification');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->tinyInteger('target')->default(0)->comment('0:buyer, 1: sellers, 2:buyers');
+            $table->tinyInteger('target')->default(0)->comment('0:buyer, 1: sellers, 2:all');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
