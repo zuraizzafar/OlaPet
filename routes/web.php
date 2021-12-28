@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/change-mode', function() {
-    $ui_mode = session('ui_mode');
+    $ui_mode = session('ui_mode', 'light');
     if($ui_mode == "light") {
         session(['ui_mode' => 'dark']);
     }
@@ -29,3 +30,7 @@ Route::get('/change-mode', function() {
     }
     return redirect()->back();
 })->name('ui_mode');
+
+Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
+
+Route::get('/seller', [HomeController::class, 'seller'])->name('seller_dashboard');

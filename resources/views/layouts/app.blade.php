@@ -132,6 +132,20 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->ge
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
+                                @if(Auth::user()->type==1)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('seller_dashboard') }}">
+                                        {{ __('Seller Dashboard') }}
+                                    </a>
+                                </li>
+                                @endif
+                                @if(Auth::user()->type==2)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin_dashboard') }}">
+                                        {{ __('Admin Dashboard') }}
+                                    </a>
+                                </li>
+                                @endif
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

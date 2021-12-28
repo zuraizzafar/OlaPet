@@ -1,0 +1,25 @@
+* {
+    scrollbar-color: #373177 #f1f1f1;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #373177;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #f3764a;
+}
+
+.pade-loader {
+    z-index: 9999;
+    display: flex;
+}
