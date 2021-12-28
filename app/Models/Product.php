@@ -21,4 +21,9 @@ class Product extends Model
         'variations',
         'price',
     ];
+
+    
+    public function attributes() {
+        return $this->hasMany('App\Models\Attributes', 'product_id', 'id');
+    }
 }

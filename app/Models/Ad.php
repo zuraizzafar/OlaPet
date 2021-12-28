@@ -13,4 +13,7 @@ class Ad extends Model
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+    public function images() {
+        return $this->hasMany('App\Models\Media', 'id', 'image');
+    }
 }
