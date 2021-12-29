@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateUsersTable extends Migration
 {
@@ -23,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('type')->default(0)->comment('0: buyer, 1; seller, 2:admin');
             $table->unsignedBigInteger('image')->nullable();
+            $table->dateTime('notification_read_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

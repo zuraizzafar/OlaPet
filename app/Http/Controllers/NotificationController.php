@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
@@ -15,7 +17,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->get();
+        $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->orderBy('updated_at', 'desc')->get();
         return $notifications;
     }
 
@@ -83,5 +85,9 @@ class NotificationController extends Controller
     public function destroy(Notification $notification)
     {
         //
+    }
+
+    public function notification_read_at() {
+        User::where('id', Auth::id())->update(['notification_read_at' => DB::raw('CURRENT_TIMESTAMP')]);
     }
 }

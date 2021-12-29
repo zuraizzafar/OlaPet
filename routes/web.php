@@ -31,7 +31,8 @@ Route::get('/change-mode', function() {
     return redirect()->back();
 })->name('ui_mode');
 
-Route::post('/get-notifications', [NotificationController::class, 'index'])->name('get_notifications');
+Route::post('/get-notifications', [NotificationController::class, 'index'])->name('get_notifications')->middleware('auth');;
+Route::post('/update-notification-readat', [NotificationController::class, 'notification_read_at'])->name('notification_read_at')->middleware('auth');;
 
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
 

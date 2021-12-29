@@ -4,7 +4,7 @@ use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 $ui_mode = session('ui_mode', 'light');
-$notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->get();
+$notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->orderBy('updated_at', 'desc')->get();
 ?>
 
 <!doctype html>
@@ -64,7 +64,12 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->ge
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-bell fs-4 mx-1"></i></a>
+                            <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell fs-4 mx-1"></i>
+                                <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif>
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                            </a>
 
                             <ul class="notifification-dropdown dropdown-menu dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(count($notifications))
