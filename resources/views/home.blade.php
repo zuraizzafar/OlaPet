@@ -12,7 +12,7 @@
                 <a href="#" class="btn btn-primary">Olapet Mall</a>
             </div>
         </div>
-        <div class="item home-slide home-slide-2 min-vh-50 p-5 text-left row mx-0 align-content-center">
+        <div class="item home-slide home-slide-2 min-vh-50 py-5 text-center text-sm-left row mx-0 align-content-center">
             <div class="col-12">
                 <h2>Find perfect match!</h2>
                 <p class="text-dark">Find pets that are for you! Watch for OlaPet ads section.</p>
@@ -28,5 +28,8 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid py-5">
+
 </div>
 @endsection

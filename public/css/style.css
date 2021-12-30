@@ -67,3 +67,13 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-100%);
     margin-top: 0;
 }
+
+.owl-theme .owl-controls .owl-page span {
+    background-color: var(--bs-light);
+}
+
+@media (max-width: 580px) {
+    .notifification-dropdown.dropdown-menu {
+        transform: translateX(-50%);
+    }
+}

@@ -45,13 +45,13 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                         </div>
                     </form>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler border-0 outline-0 btn-outline-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <i class="fas fa-ellipsis-v"></i>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Center Right Of Navbar -->
-                    <ul class="navbar-nav mx-auto">
+                    <ul class="navbar-nav mx-auto flex-row justify-content-around">
                         @if(Auth::user())
                         <li class="nav-item">
                             <a class="nav-link" href="">
@@ -71,7 +71,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                                 </span>
                             </a>
 
-                            <ul class="notifification-dropdown dropdown-menu dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
+                            <ul class="notifification-dropdown dropdown-menu position-absolute dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(count($notifications))
                                     @foreach($notifications as $notification)
                                     <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
@@ -101,7 +101,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <ul class="navbar-nav ms-auto align-items-center flex-row justify-content-around">
                         <li class="nav-item me-3">
                             <a class="nav-link" href="{{ route('ui_mode') }}">
                                 @if($ui_mode=='dark')
@@ -111,7 +111,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                                 @endif
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-md-none d-lg-inline-block">
                             <a class="nav-link d-flex align-items-center" href="">
                                 <i class="fas fa-store fs-4 me-2"></i>
                                 {{ __('OlaPet Mall') }}
@@ -136,7 +136,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <ul class="dropdown-menu dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu position-absolute dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(Auth::user()->type==1)
                                 <li>
                                     <a class="dropdown-item" href="{{ route('seller_dashboard') }}">
