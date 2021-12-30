@@ -17,7 +17,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
     <title>@yield('title', 'Pet Shop') - {{ config('app.name', 'OlaPet') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -168,7 +168,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

@@ -19,6 +19,12 @@
     background: #f3764a;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
 .pade-loader {
     z-index: 9999;
     display: flex;
@@ -32,4 +38,25 @@
     max-height: 300px;
     overflow: auto;
     min-width: 300px;
+}
+
+.min-vh-50 {
+    min-height: 50vh !important;
+}
+
+.home-slide {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home-slide-1 {
+    background-image: url('/images/pexels-lumn-406014.jpg');
+}
+.home-slide-2 {
+    background-image: url('/images/wepik-20211130-171511.jpg');
+    background-position: center bottom;
+}
+.home-slide-3 {
+    background-image: url('/images/adorable-brown-white-basenji-dog-smiling-giving-high-five-isolated-white.jpg');
+    background-position: center top;
 }
