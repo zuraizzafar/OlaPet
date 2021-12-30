@@ -27,3 +27,5 @@ import { owlCarousel } from "owlcarousel/owl-carousel/owl.carousel";
 window.owlCarousel = owlCarousel;
 
 import "@lottiefiles/lottie-player/dist/lottie-player";
+
+import "chart.js/dist/chart";

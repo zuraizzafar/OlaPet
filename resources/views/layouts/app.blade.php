@@ -45,7 +45,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->or
                         </div>
                     </form>
                 </div>
-                <button class="navbar-toggler border-0 outline-0 btn-outline-light shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler border-0 outline-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
 
