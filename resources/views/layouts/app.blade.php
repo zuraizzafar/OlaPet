@@ -66,25 +66,33 @@ $notifications = Notification::whereIn('target', [Auth::user()->type ?? 0, 2])->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-bell fs-4 mx-1"></i>
-                                <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if(count($notifications)) @if((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif @endif>
+                                <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if(!count($notifications)) style="display: none" @elseif((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif>
                                         <span class="visually-hidden">New alerts</span>
                                 </span>
                             </a>
 
                             <ul class="notifification-dropdown dropdown-menu position-absolute dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(count($notifications))
-                                @foreach($notifications as $notification)
-                                <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
+                                    @foreach($notifications as $notification)
+                                    <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
+                                        <span class="d-block">
+                                            {{ $notification->notification }}
+                                        </span>
+                                        <small class="d-block text-muted">
+                                            {{ date( 'M d, Y', strtotime($notification->updated_at)) }}
+                                        </small>
+                                    </li>
+                                    @endforeach
+                                @else
+                                <li class="text-right mx-1 px-2 border-bottom d-none" data-datetime="1609459200">
                                     <span class="d-block">
-                                        {{ $notification->notification }}
+                                        Test for all
                                     </span>
                                     <small class="d-block text-muted">
-                                        {{ date( 'M d, Y', strtotime($notification->updated_at)) }}
+                                        Jan 01, 2021
                                     </small>
                                 </li>
-                                @endforeach
-                                @else
-                                <li class="text-center">
+                                <li class="text-center no-notifications">
                                     <small>
                                         No notifications found.
                                     </small>

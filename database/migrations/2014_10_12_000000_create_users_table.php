@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('type')->default(0)->comment('0: buyer, 1; seller, 2:admin');
             $table->unsignedBigInteger('image')->nullable();
-            $table->dateTime('notification_read_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('notification_read_at')->default('2020-01-01 00:00:00');
             $table->timestamps();
         });
     }
