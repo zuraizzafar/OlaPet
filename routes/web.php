@@ -37,7 +37,3 @@ Route::post('/update-notification-readat', [NotificationController::class, 'noti
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
 
 Route::get('/seller', [HomeController::class, 'seller'])->name('seller_dashboard');
-
-Route::get('/test', function() {
-    Storage::disk('google')->put('test.txt', 'Hello World');
-});
