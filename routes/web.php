@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-
+use Illuminate\Support\Facades\Storage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +37,7 @@ Route::post('/update-notification-readat', [NotificationController::class, 'noti
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
 
 Route::get('/seller', [HomeController::class, 'seller'])->name('seller_dashboard');
+
+Route::get('/test', function() {
+    Storage::disk('google')->put('test.txt', 'Hello World');
+});
