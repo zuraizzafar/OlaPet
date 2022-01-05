@@ -1,11 +1,9 @@
 <?php
-
-use App\Models\Notification;
-use Illuminate\Support\Facades\Auth;
-
-$ui_mode = session('ui_mode', 'light');
-$notifications = Notification::whereIn('target', [Auth::user()->type ?? 0, 2])->orderBy('updated_at', 'desc')->get();
+    use Illuminate\Support\Facades\Storage;
+    $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
+    extract($data);
 ?>
+@include('scripts.header')
 
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -20,9 +18,10 @@ $notifications = Notification::whereIn('target', [Auth::user()->type ?? 0, 2])->
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @include('scripts.styles')
 </head>
 
-<body class="@if($ui_mode=='dark') {{ 'bg-dark-seconday' }} @endif">
+<body class="@if($ui_mode=='dark') {{ 'bg-dark-seconday' }} @endif" onload="body_load_complete()">
     <div id="app">
         <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 @if($ui_mode=='dark') {{ 'bg-dark' }} @else {{ 'bg-white' }} @endif justify-content-center align-items-center">
             <lottie-player src="{{ asset('lottiefiles/loader.json') }}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
@@ -30,7 +29,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type ?? 0, 2])->
         <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-sm' }} @else {{ 'navbar-dark bg-dark shadow' }} @endif sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ route('home') }}">
-                    <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
+                    <img class="w-50" src="{{ get_file_path('logo.png', $drive) }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
                     <form action="" class="search-ads-form">
@@ -182,7 +181,7 @@ $notifications = Notification::whereIn('target', [Auth::user()->type ?? 0, 2])->
     </div>
 
     <script src="{{ asset('js/script.js') }}" defer></script>
-    @include('js.notifications')
+    @include('scripts.notifications')
 </body>
 
 </html>

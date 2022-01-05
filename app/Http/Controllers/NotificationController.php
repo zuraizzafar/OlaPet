@@ -17,7 +17,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = Notification::whereIn('target', [Auth::user()->type??0, 2])->orderBy('updated_at', 'desc')->get();
+        $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user()->type??0, 2])->orderBy('updated_at', 'desc')->get();
         return $notifications;
     }
 

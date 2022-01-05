@@ -37,3 +37,9 @@ Route::post('/update-notification-readat', [NotificationController::class, 'noti
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin_dashboard');
 
 Route::get('/seller', [HomeController::class, 'seller'])->name('seller_dashboard');
+
+Route::get('/test', function() {
+    $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
+    // return $drive;
+    return array_search('logo.png', array_column($drive, 'name'));
+});

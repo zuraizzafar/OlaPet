@@ -1,3 +1,10 @@
+<?php
+    use Illuminate\Support\Facades\Storage;
+    $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
+    extract($data);
+?>
+@include('scripts.header')
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -23,10 +30,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                    <img class="w-50" src="{{ get_file_path('logo.png', $drive) }}" alt="{{ config('app.name', 'Laravel') }}">
                 </div>
-                <div class="sidebar-brand-text mx-3">OlaPet <sup>Admin</sup></div>
             </a>
 
             <!-- Divider -->

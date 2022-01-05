@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $('.pade-loader').fadeOut(500);
     $('.owl-carousel.home-banner-slider').owlCarousel({
         loop:true,
         margin:0,
@@ -9,3 +8,8 @@ $(document).ready(function () {
         nav: true
     })
 })
+
+function body_load_complete() {
+    $('.pade-loader').fadeOut(500);
+    $('body').addClass('animate-bottom');
+}
