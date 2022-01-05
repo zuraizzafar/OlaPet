@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $data = array(
             'ui_mode' => session('ui_mode', 'light'),
-            'notifications' => Notification::where('status', 1)->whereIn('target', [Auth::user()->type ?? 0, 2])->orderBy('updated_at', 'desc')->get(),
         );
         View::share('data', $data);
     }

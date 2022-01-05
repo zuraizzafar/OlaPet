@@ -1,7 +1,10 @@
 <?php
     use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\Notification;
     $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
     extract($data);
+    $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user()->type??0, 2])->where(function($query) {$query->where('target_user', null)->orWhere('target_user', Auth::id());})->orderBy('updated_at', 'desc')->get();
 ?>
 @include('scripts.header')
 
