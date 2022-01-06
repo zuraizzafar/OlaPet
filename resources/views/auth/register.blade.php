@@ -74,17 +74,14 @@
                         <input id="password-confirm" type="password" class="form-control my-0 @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password...">
                     </div>
                 </div>
-
                 <div class="my-3 col-md-7">
                     <button type="submit" class="btn btn-primary w-100 rounded-pill">
                         {{ __('Register') }} <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
-
                 <div class="mb-2 col-md-7 text-center">
                     <small>Already have an account? <a href="{{ route('login') }}">Login.</a> </small>
                 </div>
-
                 <div class="col-md-7 text-center">
                     <small> 
                         <a href="{{ route('home') }}">Home</a> 
@@ -92,7 +89,6 @@
                         <a href="#">Privacy Policy</a>
                     </small>
                 </div>
-                
                 <div class="col-md-7 text-center">
                     <small> 
                         <i class="far fa-copyright"></i> 2022 <a class="text-decoration-none" href="{{ route('home') }}">OlaPet</a>, All rights reserved.
