@@ -6,7 +6,7 @@
     <div class="row justify-content-center min-vh-100">
         <div class="col-md-6 align-self-center">
             <div class="text-center pb-4">
-                <a class="d-inline-block" href="{{ route('home') }}">
+                <a href="{{ route('home') }}">
                     <img class="col-5 col-md-3" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
             </div>
