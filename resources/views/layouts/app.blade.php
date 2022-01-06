@@ -1,10 +1,5 @@
 <?php
-    use Illuminate\Support\Facades\Storage;
-    use Illuminate\Support\Facades\Auth;
-    use App\Models\Notification;
-    $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
-    extract($data);
-    $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user()->type??0, 2])->where(function($query) {$query->where('target_user', null)->orWhere('target_user', Auth::id());})->orderBy('updated_at', 'desc')->get();
+extract($data);
 ?>
 @include('scripts.header')
 
@@ -24,15 +19,16 @@
     @include('scripts.styles')
 </head>
 
-<body class="@if($ui_mode=='dark') {{ 'bg-dark-seconday' }} @endif" onload="body_load_complete()">
+<body class="@if($ui_mode=='dark') {{ 'dark-mode-on bg-dark-seconday' }} @endif route_{{ Route::currentRouteName() }}" onload="body_load_complete()">
     <div id="app">
         <div class="pade-loader w-100 h-100 position-fixed top-0 start-0 @if($ui_mode=='dark') {{ 'bg-dark' }} @else {{ 'bg-white' }} @endif justify-content-center align-items-center">
             <lottie-player src="{{ asset('lottiefiles/loader.json') }}" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
         </div>
+        @if(!in_array(Route::currentRouteName(), $nav_off))
         <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-sm' }} @else {{ 'navbar-dark bg-dark shadow' }} @endif sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ route('home') }}">
-                    <img class="w-50" src="{{ get_file_path('logo.png', $drive) }}" alt="{{ config('app.name', 'Laravel') }}">
+                    <img class="w-50" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
                     <form action="" class="search-ads-form">
@@ -56,17 +52,17 @@
                     <ul class="navbar-nav mx-auto flex-row justify-content-around">
                         @if(Auth::user())
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="" title="My Ads">
                                 <i class="bi bi-stickies-fill fs-4 mx-1 lh-1"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="" title="New Ad">
                                 <i class="fas fa-plus-square fs-4 mx-1"></i>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
                                 <i class="fas fa-bell fs-4 mx-1"></i>
                                 <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if(!count($notifications)) style="display: none" @elseif((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif>
                                         <span class="visually-hidden">New alerts</span>
@@ -75,16 +71,16 @@
 
                             <ul class="notifification-dropdown dropdown-menu position-absolute dropdown-menu-start @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
                                 @if(count($notifications))
-                                    @foreach($notifications as $notification)
-                                    <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
-                                        <span class="d-block">
-                                            {{ $notification->notification }}
-                                        </span>
-                                        <small class="d-block text-muted">
-                                            {{ date( 'M d, Y', strtotime($notification->updated_at)) }}
-                                        </small>
-                                    </li>
-                                    @endforeach
+                                @foreach($notifications as $notification)
+                                <li class="text-right mx-1 px-2 border-bottom" data-datetime="{{ strtotime($notification->updated_at) }}">
+                                    <span class="d-block">
+                                        {{ $notification->notification }}
+                                    </span>
+                                    <small class="d-block text-muted">
+                                        {{ date( 'M d, Y', strtotime($notification->updated_at)) }}
+                                    </small>
+                                </li>
+                                @endforeach
                                 @else
                                 <li class="text-right mx-1 px-2 border-bottom d-none" data-datetime="1609459200">
                                     <span class="d-block">
@@ -103,7 +99,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="" title="Chats">
                                 <i class="bi bi-chat-text-fill fs-4 mx-1 lh-1"></i>
                             </a>
                         </li>
@@ -113,7 +109,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto align-items-center flex-row justify-content-around">
                         <li class="nav-item me-3">
-                            <a class="nav-link" href="{{ route('ui_mode') }}">
+                            <a class="nav-link" href="{{ route('ui_mode') }}" title="Switch Mode">
                                 @if($ui_mode=='dark')
                                 <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
                                 @else
@@ -177,6 +173,36 @@
                 </div>
             </div>
         </nav>
+        @endif
+
+        @if(in_array(Route::currentRouteName(), $banner_on))
+        <div class="container-fluid px-0">
+            <div class="home-banner-slider owl-carousel">
+                <div class="item home-slide home-slide-1 min-vh-50 py-5 text-center row mx-0 align-content-center">
+                    <div class="col-12">
+                        <h2>Your perfect online Pet store</h2>
+                        <p class="text-white">Buy pets products at one stop, visit OlaPet Mall now!</p>
+                        <a href="#" class="btn btn-primary">Olapet Mall</a>
+                    </div>
+                </div>
+                <div class="item home-slide home-slide-2 min-vh-50 py-5 text-center text-sm-left row mx-0 align-content-center">
+                    <div class="col-12">
+                        <h2>Find perfect match!</h2>
+                        <p class="text-dark">Find pets that are for you! Watch for OlaPet ads section.</p>
+                    </div>
+                </div>
+                <div class="item home-slide home-slide-3 min-vh-50 py-5 text-center text-primary row mx-0 align-content-center">
+                    <div class="col-12">
+                        <h2>Watchout for sales!</h2>
+                        <p class="text-dark">Avail discounts on your favorite products.</p>
+                        @if(!Auth::user())
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a> or <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         <main>
             @yield('content')
@@ -185,7 +211,7 @@
 
     <script src="{{ asset('js/script.js') }}" defer></script>
     @if(Auth::user())
-        @include('scripts.notifications')
+    @include('scripts.notifications')
     @endif
 </body>
 

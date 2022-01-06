@@ -2,7 +2,6 @@
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Support\Facades\Auth;
     use App\Models\Notification;
-    $drive = Storage::disk('google')->listContents('1w3BLYwxhXYpwgwURxXZk6-Rz1vcqYzmp');
     extract($data);
     $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user()->type??0, 2])->where(function($query) {$query->where('target_user', null)->orWhere('target_user', Auth::id());})->orderBy('updated_at', 'desc')->get();
 ?>
@@ -34,7 +33,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="w-50" src="{{ get_file_path('logo.png', $drive) }}" alt="{{ config('app.name', 'Laravel') }}">
+                    <img class="w-50" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
                 </div>
             </a>
 
