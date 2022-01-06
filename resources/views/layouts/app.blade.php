@@ -184,7 +184,9 @@
     </div>
 
     <script src="{{ asset('js/script.js') }}" defer></script>
-    @include('scripts.notifications')
+    @if(Auth::user())
+        @include('scripts.notifications')
+    @endif
 </body>
 
 </html>

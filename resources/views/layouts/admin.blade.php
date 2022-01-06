@@ -150,6 +150,7 @@
         </main>
     </div>
 
+    <script src="{{ asset('js/script.js') }}" defer></script>
     <script src="{{ asset('js/admin.js') }}" defer></script>
 </body>
 
