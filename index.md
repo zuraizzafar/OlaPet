@@ -1,10 +1,29 @@
-## Welcome to GitHub Pages
+## Welcome to OlaPet Repository
 
-You can use the [editor on GitHub](https://github.com/zuraizzafar/OlaPet/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You can download the repository or can clone it using the command: ``` gh repo clone zuraizzafar/OlaPet ```, in your shell or command propmt.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Getting Started
 
-### Markdown
+Following is the full go through guide to clone the repository and get ready the project on your local machine. After cloning the repository you need to rename ```.env.example``` to ```.env``` and make sure to fill in the details of your database name and connection credentials.
+Next up, you need to add in the Google Drive API details as well as the MAIL SMTP details. For Google Drive APIs follow [Google Drive API Reference](https://developers.google.com/drive/api/v3/reference/)
+
+.env variables for the Google Drive are as follows;
+
+```
+
+```
+
+
+
+
+Now, open the folder and run following commands in your terminal or command prompt.
+
+```
+composer update
+npm install
+php artisan migrate
+```
+
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
