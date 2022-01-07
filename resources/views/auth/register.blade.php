@@ -2,7 +2,7 @@
 @section('title', 'Register')
 
 @section('content')
-<div class="container-fluid bg-white bg-banner-sm">
+<div class="container-fluid bg-banner-sm">
     <div class="row justify-content-center min-vh-100">
         <div class="col-md-6 align-self-center">
             <div class="text-center pb-4">

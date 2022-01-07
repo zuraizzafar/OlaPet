@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $data = array(
-            'ui_mode' => session('ui_mode', 'light'),
             'nav_off' => array(
                 'register',
                 'login'

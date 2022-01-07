@@ -1,4 +1,5 @@
 <?php
+$ui_mode = session('ui_mode', 'light');
 extract($data);
 ?>
 @include('scripts.header')
