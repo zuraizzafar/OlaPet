@@ -14,7 +14,7 @@
     }
 
     .bg-pattern {
-        background-image: url('{{ get_file_path("magicpattern-ixxjruC7Gg4-unsplash.jpg", get_drive_content()) }}');
+        background: url('{{ get_file_path("magicpattern-ixxjruC7Gg4-unsplash.jpg", get_drive_content()) }}'), #7159a1;
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;

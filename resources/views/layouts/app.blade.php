@@ -128,13 +128,13 @@ extract($data);
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" data-bs-toggle="modal" href="#loginToggle">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" data-bs-toggle="modal" href="#signupToggle">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
@@ -197,7 +197,7 @@ extract($data);
                         <h2>Watchout for sales!</h2>
                         <p class="text-dark">Avail discounts on your favorite products.</p>
                         @if(!Auth::user())
-                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a> or <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                        <a class="btn btn-primary" data-bs-toggle="modal" href="#loginToggle">Login</a> or <a class="btn btn-primary" data-bs-toggle="modal" href="#signupToggle">Register</a>
                         @endif
                     </div>
                 </div>
@@ -208,6 +208,10 @@ extract($data);
         <main>
             @yield('content')
         </main>
+        @include('auth.modals')
+        <footer>
+
+        </footer>
     </div>
 
     <script src="{{ asset('js/script.js') }}" defer></script>
