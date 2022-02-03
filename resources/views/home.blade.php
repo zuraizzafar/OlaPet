@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid py-5">
     <div class="row">
-        <div class="col-3">
+        <div class="col-sm-3">
             <a class="text-decoration-none text-dark" href="javascript:void(0)">
                 <div class="card">
                     <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg" class="card-img-top" alt="...">
