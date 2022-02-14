@@ -37,9 +37,9 @@ class AppServiceProvider extends ServiceProvider
             'banner_on' => array(
                 'home'
             ),
-            'notifications' => Notification::where('status', 1)->whereIn('target', [Auth::user()->type ?? 0, 2])->where(function ($query) {
-                $query->where('target_user', null)->orWhere('target_user', Auth::id());
-            })->orderBy('updated_at', 'desc')->get()
+            // 'notifications' => Notification::where('status', 1)->whereIn('target', [Auth::user()->type ?? 0, 2])->where(function ($query) {
+            //     $query->where('target_user', null)->orWhere('target_user', Auth::id());
+            // })->orderBy('updated_at', 'desc')->get()
         );
         View::share('data', $data);
     }
