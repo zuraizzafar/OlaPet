@@ -33,7 +33,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
-                    <img class="w-50" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
+                    <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                 </div>
             </a>
 

@@ -29,7 +29,7 @@ extract($data);
         <nav class="navbar navbar-expand-md @if($ui_mode=='light') {{ 'navbar-light bg-white shadow-sm' }} @else {{ 'navbar-dark bg-dark shadow' }} @endif sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand col-4 col-md-2" href="{{ route('home') }}">
-                    <img class="w-50" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
+                    <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
                     <form action="" class="search-ads-form">

@@ -7,7 +7,7 @@
                         <div class="col-md-6 align-self-center">
                             <div class="text-center pb-4">
                                 <a href="{{ route('home') }}">
-                                    <img class="col-5 col-md-3" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
+                                    <img class="col-5 col-md-3" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                                 </a>
                             </div>
                             <form class="row justify-content-center" method="POST" action="{{ route('login') }}">
@@ -100,7 +100,7 @@
                         <div class="col-md-6 align-self-center">
                             <div class="text-center pb-4">
                                 <a href="{{ route('home') }}">
-                                    <img class="col-5 col-md-3" src="{{ get_file_path('logo.png', get_drive_content()) }}" alt="{{ config('app.name', 'Laravel') }}">
+                                    <img class="col-5 col-md-3" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                                 </a>
                             </div>
                             <form class="row justify-content-center" method="POST" action="{{ route('register') }}">
