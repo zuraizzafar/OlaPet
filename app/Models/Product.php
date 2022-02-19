@@ -26,4 +26,7 @@ class Product extends Model
     public function attributes() {
         return $this->hasMany('App\Models\Attributes', 'product_id', 'id');
     }
+    public function store() {
+        return $this->hasOne('App\Models\Store', 'id', 'store_id');
+    }
 }

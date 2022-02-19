@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return '<h1>Adi</h1>';
+        return '';
     }
 
     /**
