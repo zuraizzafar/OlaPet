@@ -8,7 +8,7 @@
         <div class="col-sm-3">
             <a class="text-decoration-none text-dark" href="javascript:void(0)">
                 <div class="card">
-                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg" class="card-img-top" alt="...">
+                    <img src="{{ Storage::disk('s3')->temporaryUrl('images/pexels-lumn-406014.jpg', now()->addMinutes(5) ) }}" class="card-img-top" alt="{{ Storage::disk('s3')->path('images/pexels-lumn-406014.jpg') }}">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">

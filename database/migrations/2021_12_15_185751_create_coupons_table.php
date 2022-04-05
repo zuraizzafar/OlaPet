@@ -17,9 +17,9 @@ class CreateCouponsTable extends Migration
             $table->id();
             $table->string('code', 12);
             $table->unsignedBigInteger('store_id');
-            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
+            $table->foreign('store_id')->nullable()->references('id')->on('stores')->onDelete('cascade');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->nullable()->references('id')->on('products')->onDelete('cascade');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->tinyInteger('status')->default(1);

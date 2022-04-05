@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class DeliveryChargesList extends Model
 {
     use HasFactory;
+
+    public function service() {
+        return $this->hasOne('App\Models\DeliveryService', 'id', 'service');
+    }
+
+    public function package() {
+        return $this->hasOne('App\Models\PackageSize', 'id', 'package');
+    }
+
+    public function state() {
+        return $this->hasOne('App\Models\State', 'id', 'state_id');
+    }
 }

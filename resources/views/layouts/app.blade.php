@@ -128,13 +128,13 @@ extract($data);
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#loginToggle">{{ __('Login') }}</a>
+                            <a class="nav-link login-link" data-bs-toggle="modal" href="#loginToggle">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#signupToggle">{{ __('Register') }}</a>
+                            <a class="nav-link register-link" data-bs-toggle="modal" href="#signupToggle">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
@@ -218,6 +218,7 @@ extract($data);
     @if(Auth::user())
     @include('scripts.notifications')
     @endif
+    @include('scripts.scripts')
 </body>
 
 </html>

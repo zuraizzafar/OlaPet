@@ -46,8 +46,57 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Ad','user_id','id');
     }
+
     public function products()
     {
-        return $this->hasMany('App\Models\product','user_id','id');
+        return $this->hasMany('App\Models\Product','user_id','id');
+    }
+
+    public function chat_messages() {
+        return $this->hasMany('App\Models\ChatMessage', 'user_id', 'id');
+    }
+
+    public function chats() {
+        return $this->hasMany('App\Models\ChatUser', 'user_id', 'id')->with('chat');
+    }
+
+    public function faqs() {
+        return $this->hasMany('App\Models\FAQ', 'user_id', 'id');
+    }
+
+    public function notifications() {
+        return $this->hasMany('App\Models\Notification', 'user_id', 'id');
+    }
+
+    public function my_notifications() {
+        return $this->hasMany('App\Models\Notification', 'target_user', 'id');
+    }
+
+    public function orders() {
+        return $this->hasMany('App\Models\Order', 'user_id', 'id');
+    }
+
+    public function ratings() {
+        return $this->hasMany('App\Models\Rating', 'user_id', 'id');
+    }
+
+    public function store() {
+        return $this->hasOne('App\Models\Store', 'user_id', 'id');
+    }
+
+    public function transactions() {
+        return $this->hasOne('App\Models\Transaction', 'user_id', 'id');
+    }
+
+    public function profile_image() {
+        return $this->hasOne('App\Models\Media', 'id', 'image');
+    }
+
+    public function addresses() {
+        return $this->hasMany('App\Models\UserAddress', 'user_id', 'id');
+    }
+
+    public function wallet() {
+        return $this->hasOne('App\Models\Wallet', 'user_id', 'id');
     }
 }

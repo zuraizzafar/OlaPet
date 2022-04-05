@@ -13,7 +13,20 @@ class Ad extends Model
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+
+    public function category() {
+        return $this->hasOne('App\Models\Category', 'id', 'cat_id');
+    }
+
+    public function banner() {
+        return $this->hasOne('App\Models\Media', 'id', 'image');
+    }
+
     public function images() {
-        return $this->hasMany('App\Models\Media', 'id', 'image');
+        return $this->hasMany('App\Models\Media', 'parent', 'id');
+    }
+
+    public function chats() {
+        return $this->hasMany('App\Models\Chat', 'ad_id', 'id');
     }
 }
