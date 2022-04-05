@@ -9,6 +9,13 @@ class CartProduct extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'cart_id',
+        'quantity',
+        'product_id',
+        'variation',
+    ];
+
     public function product() {
         return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }

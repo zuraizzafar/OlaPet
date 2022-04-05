@@ -9,6 +9,11 @@ class TagProduct extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'product_id',
+        'tag_id',
+    ];
+
     public function product() {
         return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }

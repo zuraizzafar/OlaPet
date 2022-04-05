@@ -9,6 +9,13 @@ class PackageSize extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'dimension',
+        'weight',
+        'status',
+    ];
+
     public function general_charge() {
         return $this->hasMany('App\Models\DeliveryCharges', 'package', 'id');
     }

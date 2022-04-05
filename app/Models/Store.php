@@ -9,6 +9,14 @@ class Store extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'logo',
+        'banner',
+        'user_id',
+        'status',
+    ];
+
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }

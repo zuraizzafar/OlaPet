@@ -9,6 +9,22 @@ class UserAddress extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'name',
+        'address',
+        'street',
+        'postal_code',
+        'type',
+        'city',
+        'state',
+        'country',
+        'phone',
+        'notes',
+        'user_id',
+        'status'
+    ];
+
     public function orders() {
         return $this->hasMany('App\Models\Order', 'address_id', 'id');
     }

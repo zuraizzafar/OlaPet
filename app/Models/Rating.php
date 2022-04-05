@@ -9,6 +9,15 @@ class Rating extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'order_id',
+        'product_id',
+        'rating',
+        'review',
+        'status',
+    ];
+
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }

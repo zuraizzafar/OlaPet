@@ -9,6 +9,13 @@ class OrderProduct extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'quantity',
+        'variation',
+    ];
+
     public function order() {
         return $this->hasOne('App\Models\Order', 'id', 'order_id');
     }

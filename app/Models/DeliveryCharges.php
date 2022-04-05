@@ -9,6 +9,13 @@ class DeliveryCharges extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'service',
+        'package',
+        'price',
+        'status',
+    ];
+
     public function service() {
         return $this->hasOne('App\Models\DeliveryService', 'id', 'service');
     }

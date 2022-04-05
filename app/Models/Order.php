@@ -9,6 +9,17 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'total',
+        'coupon_id',
+        'updated_total',
+        'address_id',
+        'delivery',
+        'payment',
+        'status',
+    ];
+
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
@@ -27,5 +38,9 @@ class Order extends Model
 
     public function ratings() {
         return $this->hasMany('App\Models\Rating', 'order_id', 'id');
+    }
+
+    public function transaction() {
+        return $this->hasOne('App\Models\Transaction', 'order_id', 'id');
     }
 }

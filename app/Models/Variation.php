@@ -9,6 +9,14 @@ class Variation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'product_id',
+        'price',
+        'package_id',
+        'status',
+    ];
+
     public function orders() {
         return $this->hasMany('App\Models\OrderProduct', 'variation_id', 'id')->with('order');
     }

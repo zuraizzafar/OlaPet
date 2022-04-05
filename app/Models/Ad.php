@@ -9,6 +9,16 @@ class Ad extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'price',
+        'user_id',
+        'short_d',
+        'long_d',
+        'image',
+        'status',
+        'cat_id',
+    ];
     
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');

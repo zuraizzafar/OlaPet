@@ -9,6 +9,13 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'store_id',
+        'slug',
+        'status',
+    ];
+
     public function store() {
         return $this->hasOne('App\Models\Store', 'id', 'store_id');
     }

@@ -9,6 +9,14 @@ class FAQ extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'question',
+        'product_id',
+        'answer',
+        'status',
+    ];
+
     public function product() {
         return $this->hasOne('App\Models\Product', 'id', 'product_id');
     }

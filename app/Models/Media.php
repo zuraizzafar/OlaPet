@@ -9,6 +9,16 @@ class Media extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'name',
+        'url',
+        'alt',
+        'type',
+        'status',
+        'parent',
+    ];
+
     public function users() {
         return $this->hasMany('App\Models\User', 'id', 'user_id');
     }

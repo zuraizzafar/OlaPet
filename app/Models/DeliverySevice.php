@@ -9,6 +9,12 @@ class DeliveryService extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'image',
+        'status',
+    ];
+
     public function general_charge() {
         return $this->hasMany('App\Models\DeliveryCharges', 'service', 'id');
     }

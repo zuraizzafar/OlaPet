@@ -9,6 +9,12 @@ class Wallet extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'balance',
+        'status',
+    ];
+
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }

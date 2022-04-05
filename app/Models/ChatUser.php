@@ -9,6 +9,11 @@ class ChatUser extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'chat_id',
+    ];
+
     public function chat() {
         return $this->hasOne('App\Models\Chat', 'id', 'chat_id');
     }

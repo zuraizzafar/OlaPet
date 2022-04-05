@@ -9,6 +9,11 @@ class Chat extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ad_id',
+        'status',
+    ];
+
     public function ads() {
         return $this->hasOne('App\Models\Ad', 'id', 'ad_id');
     }

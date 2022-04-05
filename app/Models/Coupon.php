@@ -9,6 +9,15 @@ class Coupon extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'code',
+        'store_id',
+        'product_id',
+        'start_date',
+        'end_date',
+        'status',
+    ];
+
     public function store() {
         return $this->hasOne('App\Models\Store', 'id', 'store_id');
     }
