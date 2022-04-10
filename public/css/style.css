@@ -44,6 +44,24 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 50vh !important;
 }
 
+.min-vh-75 {
+    min-height: 75vh !important;
+}
+
+.min-vh-65 {
+    min-height: 65vh !important;
+}
+
+.banner-search {
+    background: white;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 25px;
+}
+
 .home-slide {
     background-position: center center;
     background-repeat: no-repeat;
@@ -72,6 +90,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .cursor-pointer:hover {
     cursor: pointer;
+}
+
+.profile-dropdown {
+    min-width: 15rem;
+}
+
+div .select2-container {
+    z-index: 999999;
+    width: 100% !important;
+}
+
+.input-group .select2-container--default .select2-selection--single {
+    padding: 4px 0;
+    height: 100%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-group.input-group-lg .select2-container--default .select2-selection--single {
+    padding: 14px 0;
 }
 
 @-webkit-keyframes animatebottom {

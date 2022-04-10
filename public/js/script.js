@@ -4,8 +4,11 @@ $(document).ready(function () {
         margin: 0,
         nav: true,
         items: 1,
-        autoplayHoverPause: true,
-        nav: true
+        autoPlay: true,
+        autoPlaySpeed: 2000,
+        autoPlayTimeout: 2000,
+        autoplayHoverPause: false,
+        pagination: false
     });
 })
 

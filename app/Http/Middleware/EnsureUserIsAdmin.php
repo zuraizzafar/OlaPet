@@ -18,7 +18,7 @@ class EnsureUserIsAdmin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->type!=2) {
-            return route('home');
+            return redirect('home');
         }
         return $next($request);
     }

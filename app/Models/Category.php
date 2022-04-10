@@ -14,6 +14,7 @@ class Category extends Model
         'slug',
         'parent_id',
         'status',
+        'icon',
     ];
 
     public function products() {
@@ -22,6 +23,10 @@ class Category extends Model
 
     public function parent() {
         return $this->hasOne('App\Models\Categories', 'id', 'parent_id');
+    }
+
+    public function icon() {
+        return $this->hasOne('App\Models\Media', 'id', 'icon');
     }
 
     public function childs() {

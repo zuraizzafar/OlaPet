@@ -39,7 +39,15 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        Notification::create([
+            'notification' => $request->title,
+            'user_id' => Auth::id(),
+            'target' => $request->target,
+            'status' => 1,
+            'target_user' => $request->target_user,
+        ]);
+        return redirect()->route('admin_notifications');
     }
 
     /**
