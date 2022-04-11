@@ -218,22 +218,19 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                 <div class="row position-relative">
                     <div class="col-sm-10 col-md-6 mx-auto banner-search shadow p-4">
                         <form action="">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row align-items-center">
+                                <div class="col-md-6 mb-3 mb-sm-0">
                                     <input class="form-control shadow-sm px-4 py-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
                                 </div>
-                                <div class="col-6 col-md-3 px-md-0">
-                                    <div class="input-group input-group-lg shadow-sm">
-                                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                            <option selected>Select Category...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
+                                <div class="col-6 col-md-3">
+                                    <button type="button" class="btn py-3 w-100 btn-light border shadow-sm">
+                                        <img src="{{ asset('images/icons8-pet-64.png') }}" class="w-25" alt="">
+                                        Location
+                                    </button>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <button class="btn py-3 w-100 btn-primary shadow">
+                                    <button type="submit" class="btn py-3 w-100 btn-primary shadow">
+                                        <i class="fa-solid me-2 fa-magnifying-glass"></i>
                                         Search
                                     </button>
                                 </div>
@@ -241,9 +238,32 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         </form>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        
+                <div class="col-sm-9 mx-auto p-5">
+                    <h2 class="text-center text-white">
+                        Categories
+                        <i class="fa-solid fa-box-open-full ms-2"></i>
+                    </h2>
+                    <div class="row py-4 justify-content-between">
+                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                            <img class="mx-auto" src="{{ asset('images/icons8-pet-commands-summon-48.png') }}" alt="">
+                            <h6 class="mt-3">Find Pets</h6>
+                        </div>
+                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                            <img class="mx-auto" src="{{ asset('images/icons8-dog-bowl-48.png') }}" alt="">
+                            <h6 class="mt-3">Pet's Food</h6>
+                        </div>
+                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                            <img class="mx-auto" src="{{ asset('images/icons8-dog-house-48.png') }}" alt="">
+                            <h6 class="mt-3">Habitat & Decor</h6>
+                        </div>
+                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                            <img class="mx-auto" src="{{ asset('images/icons8-grooming-48.png') }}" alt="">
+                            <h6 class="mt-3">Grooming</h6>
+                        </div>
+                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                            <img class="mx-auto" src="{{ asset('images/icons8-scratching-post-48.png') }}" alt="">
+                            <h6 class="mt-3">Pet Toys</h6>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -254,8 +274,51 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
             @yield('content')
         </main>
         @include('auth.modals')
-        <footer>
-
+        <footer class="bg-dark text-light container-fluid py-5">
+            <div class="row">
+                <div class="col-3 px-5">
+                    <a class="d-inline mx-auto" href="{{ route('home') }}">
+                        <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
+                    </a>
+                    <p class="mt-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                </div>
+                <div class="col-2">
+                    <h4>Categories</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-0" href="#">Browse Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-0" href="#">Pets Food</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-0" href="#">Habitat & Decor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-0" href="#">Grooming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white p-0" href="#">Pet Toys</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3">
+                    <h4 class="mb-3">Our Stores</h4>
+                    <h6>City Branch</h6>
+                    <p>
+                        Office #00, Street 01, City, State Country.
+                    </p>
+                    <h6>City Branch</h6>
+                    <p>
+                        Office #00, Street 01, City, State Country.
+                    </p>
+                </div>
+                <div class="col-4">
+                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42532.75081674089!2d73.11752598796942!3d31.451606581098375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242a895a55ca9%3A0xdec58f88932671c6!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1649609535792!5m2!1sen!2s" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
         </footer>
     </div>
 

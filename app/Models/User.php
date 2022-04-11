@@ -103,4 +103,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function wallet() {
         return $this->hasOne('App\Models\Wallet', 'user_id', 'id');
     }
+
+    public function wishlists() {
+        return $this->hasMany('App\Models\Wishlist', 'user_id', 'id')->with('product');
+    }
 }

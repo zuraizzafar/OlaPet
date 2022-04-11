@@ -29,3 +29,5 @@ window.owlCarousel = owlCarousel;
 import "@lottiefiles/lottie-player/dist/lottie-player";
 
 import "chart.js/dist/chart";
+
+import "mdb-ui-kit/js/mdb.min"

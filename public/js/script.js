@@ -12,6 +12,14 @@ $(document).ready(function () {
     });
 })
 
+$('#min-price-range').change(function(){
+    $('.value-min-price').text($(this).val());
+})
+
+$('#max-price-range').change(function(){
+    $('.value-max-price').text($(this).val());
+})
+
 function body_load_complete() {
     $('.pade-loader').fadeOut(500);
     $('body').addClass('animate-bottom');

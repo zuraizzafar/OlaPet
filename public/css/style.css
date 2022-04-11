@@ -97,8 +97,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 div .select2-container {
-    z-index: 999999;
     width: 100% !important;
+}
+
+.select2-container {
+    z-index: 999999;
 }
 
 .input-group .select2-container--default .select2-selection--single {
@@ -113,6 +116,23 @@ div .select2-container {
 
 .input-group.input-group-lg .select2-container--default .select2-selection--single {
     padding: 14px 0;
+}
+
+.category-list-item {
+    transition: all 500ms;
+}
+
+.category-list-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.side-bar-heading {
+    text-align-last: justify;
+}
+
+.sidebar .form-label .value-max-price, .sidebar .form-label .value-max-price {
+    text-align-last: justify;
 }
 
 @-webkit-keyframes animatebottom {
