@@ -37,7 +37,8 @@
                                         }
                                     })
                                     Toast.fire({
-                                        title: data[i]['notification'].substring(0, 38)+(data[i]['notification'].length>=38 ? '...' : ''),
+                                        title: 'Notification',
+                                        text: data[i]['notification'].substring(0, 38)+(data[i]['notification'].length>=38 ? '...' : ''),
                                     })
                                 }
                             });

@@ -29,4 +29,9 @@ class HomeController extends Controller
     public function seller() {
         return view('seller.home');
     }
+
+    public function profile()
+    {
+        return view('profile.profile');
+    }
 }

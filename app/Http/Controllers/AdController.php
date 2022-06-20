@@ -14,7 +14,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        //
+        return view('ads.list');
     }
 
     /**
@@ -24,7 +24,7 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+        return view('ads.create');
     }
 
     /**

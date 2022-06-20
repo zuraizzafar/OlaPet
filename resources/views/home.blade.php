@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 sidebar py-4 bg-white shadow-sm">
+        <div class="col-md-3 sidebar p-4 py-5 bg-white shadow-sm">
             <div class="filters mb-5">
                 <h3 class="side-bar-heading text-justify mb-4">Filters <i class="fa-solid fa-filter"></i></h3>
                 <label class="form-label d-block" for="min-price-range">
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-md-9 p-md-5">
-            <div class="row pb-3 mb-4 border-bottom">
+            <div class="row pb-3 mb-4 mt-sm-0 mt-4 border-bottom">
                 <div class="col-sm-6 text-start">
                     <span class="text-muted">
                         Home / Location / <a href="#">Ads</a>
@@ -64,7 +64,8 @@
                 </div>
             </div>
             <div class="row">
-                @for($i=0; $i<=13; $i++) <div class="col-sm-4 mb-4 px-3">
+                @for($i=1; $i<=1; $i++) 
+                <div class="col-sm-4 mb-4 px-3">
                     <a class="text-decoration-none text-dark" href="javascript:void(0)">
                         <div class="card shadow-sm rounded">
                             <!-- <img src="{{ Storage::disk('s3')->temporaryUrl('images/pexels-lumn-406014.jpg', now()->addMinutes(5) ) }}" class="card-img-top" alt="{{ Storage::disk('s3')->path('images/pexels-lumn-406014.jpg') }}"> -->
@@ -95,16 +96,16 @@
                             </div>
                         </div>
                     </a>
+                </div>
+                @endfor
             </div>
-            @endfor
-        </div>
-        <div class="text-center">
-            <button class="btn btn-primary rounded shadow px-4 btn-lg">
-                <i class="fa-solid fa-spinner fa-spin me-3"></i>
-                Load More
-            </button>
+            <!-- <div class="text-center">
+                <button class="btn btn-primary rounded shadow px-4 btn-lg">
+                    <i class="fa-solid fa-spinner fa-spin me-3"></i>
+                    Load More
+                </button>
+            </div> -->
         </div>
     </div>
-</div>
 </div>
 @endsection

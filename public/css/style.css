@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pade-loader {
-    z-index: 9999;
+    z-index: 99999999;
     display: flex;
 }
 
@@ -101,7 +101,11 @@ div .select2-container {
 }
 
 .select2-container {
-    z-index: 999999;
+    z-index: 99;
+}
+
+.modal .select2-container {
+    z-index: 99999999;
 }
 
 .input-group .select2-container--default .select2-selection--single {
@@ -135,6 +139,70 @@ div .select2-container {
     text-align-last: justify;
 }
 
+.search-ads-form .input-group .btn.rounded-circle {
+    font-size: 13px;
+}
+
+.post-ad-sticky {
+    display: inline-block;
+    bottom: 0%;
+    left: 100%;
+    z-index: 999999;
+}
+
+.navbar {
+    z-index: 999;
+}
+
+.modal {
+    z-index: 99999999;
+}
+
+.rounded-xl {
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.rounded-md {
+    border-radius: 12px;
+}
+
+button.ad-delete-button {
+    outline: none;
+    border: none;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: rgb(41, 41, 41);
+    background: #e7e7e7;
+    border-top-right-radius: 12px;
+    height: 58px;
+    width: 58px;
+    border-bottom-left-radius: 52px;
+    padding-left: 14px;
+    padding-bottom: 8px;
+    transition: all 300ms;
+}
+
+.ad-delete-button:hover {
+    background-color: orangered;
+    color: white;
+}
+
+.single-ad img {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.profile-page-section {
+    min-height: 768px;
+}
+
 @-webkit-keyframes animatebottom {
     from {
         bottom: -100px;
@@ -162,5 +230,12 @@ div .select2-container {
 @media (max-width: 580px) {
     .notifification-dropdown.dropdown-menu {
         transform: translateX(-50%);
+    }
+    .btn.fetch-location>img {
+        max-height: 18px;
+        width: auto !important;
+    }
+    .footer-logo {
+        max-width: 132px;
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Notifications')
+@section('title', 'Ads')
 
 @section('content')
 
@@ -8,21 +8,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-end py-3">
-                <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#newNotification">
+                <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#newAd">
                     <i class="fa-solid fa-plus me-md-2"></i>
-                    New Notification
+                    New Ad
                 </button>
             </div>
             <div class="table-responsive bg-white shadow rounded p-3">
                 <h5 class="border-bottom pb-2 mb-3">
-                    Recent Notifications
+                    Ads
                     <i class="fa-solid fa-bullhorn ms-md-2"></i>
                 </h5>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Notification</th>
+                            <th scope="col">Ad</th>
                             <th scope="col">User</th>
                             <th scope="col">Target</th>
                             <th scope="col">Status</th>
@@ -32,7 +32,7 @@
                     <tfoot>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Notification</th>
+                            <th scope="col">Ad</th>
                             <th scope="col">User</th>
                             <th scope="col">Target</th>
                             <th scope="col">Status</th>
@@ -40,27 +40,27 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($notifications as $notification)
+                        @foreach($ads as $ad)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $notification->notification }}</td>
-                            <td>{{ $notification->user->name }}</td>
+                            <td>{{ $ad->ad }}</td>
+                            <td>{{ $ad->user->name }}</td>
                             <td>
-                                @if($notification->target==0)
+                                @if($ad->target==0)
                                 Buyers
-                                @elseif($notification->target==1)
+                                @elseif($ad->target==1)
                                 Sellers
                                 @else
                                 All
                                 @endif
                             </td>
                             <td>
-                                @if($notification->status==0)
+                                @if($ad->status==0)
                                 Disabled
                                 @else
                                 Enabled
                                 @endif
-                            <td>{{ $notification->created_at }}</td>
+                            <td>{{ $ad->created_at }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -70,15 +70,15 @@
         <div class="col-md-3">
         </div>
     </div>
-    <div class="modal fade" id="newNotification" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newNotificationLabel" aria-hidden="true">
+    <div class="modal fade" id="newAd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newAdLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Create Notification <i class="fa-solid fa-bullhorn ms-md-2"></i></h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Create Ad <i class="fa-solid fa-bullhorn ms-md-2"></i></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('create_notifications') }}" method="post">
+                    <form action="{{ route('create_ads') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Text</label>

@@ -61,12 +61,12 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                     <ul class="navbar-nav mx-auto flex-row justify-content-around">
                         @if(Auth::user())
                         <li class="nav-item">
-                            <a class="nav-link" href="" title="My Ads">
+                            <a class="nav-link" href="{{ route('my_ads') }}" title="My Ads">
                                 <i class="bi bi-grid-fill fs-4 mx-1 lh-1"></i>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" title="New Ad">
+                            <a class="nav-link" href="{{ route('create_ad') }}" title="Post Ad">
                                 <i class="fas fa-circle-plus fs-4 mx-1"></i>
                             </a>
                         </li>
@@ -152,8 +152,10 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                             </a>
 
                             <ul class="dropdown-menu profile-dropdown position-absolute dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
-                                <li class="px-3 py-2 mb-2 border-bottom">
-                                    {{ Auth::user()->name }}
+                                <li class="border-bottom">
+                                    <a class="dropdown-item px-3 py-2 mb-2 " href="{{ route('profile') }}">
+                                        {{ Auth::user()->name }}
+                                    </a>
                                 </li>
                                 @if(Auth::user()->type==1)
                                 <li>
@@ -215,21 +217,21 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                 </div>
             </div>
             <div class="container-fluid bg-primary py-5">
-                <div class="row position-relative">
-                    <div class="col-sm-10 col-md-6 mx-auto banner-search shadow p-4">
+                <div class="row position-relative justify-content-center mx-auto w-100">
+                    <div class="col-11 col-sm-10 col-md-6 banner-search mx-auto shadow p-3 p-sm-4">
                         <form action="">
                             <div class="row align-items-center">
                                 <div class="col-md-6 mb-3 mb-sm-0">
-                                    <input class="form-control shadow-sm px-4 py-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
+                                    <input class="form-control shadow-sm px-3 py-2 px-sm-4 py-sm-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <button type="button" class="btn py-3 w-100 btn-light border shadow-sm">
+                                    <button type="button" class="btn py-2 py-sm-3 w-100 btn-light border shadow-sm fetch-location">
                                         <img src="{{ asset('images/icons8-pet-64.png') }}" class="w-25" alt="">
                                         Location
                                     </button>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <button type="submit" class="btn py-3 w-100 btn-primary shadow">
+                                    <button type="submit" class="btn py-2 py-sm-3 w-100 btn-primary shadow">
                                         <i class="fa-solid me-2 fa-magnifying-glass"></i>
                                         Search
                                     </button>
@@ -238,29 +240,38 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         </form>
                     </div>
                 </div>
-                <div class="col-sm-9 mx-auto p-5">
+                <div class="col-sm-9 mx-auto p-3 p-sm-5">
                     <h2 class="text-center text-white">
                         Categories
                         <i class="fa-solid fa-box-open-full ms-2"></i>
                     </h2>
+                    <div class="justify-content-between d-flex text-white">
+                        <h5>
+                            Shop for
+                        </h5>
+                        <a href="#" class="text-white text-decoration-none">
+                            Shop All
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                     <div class="row py-4 justify-content-between">
-                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-pet-commands-summon-48.png') }}" alt="">
                             <h6 class="mt-3">Find Pets</h6>
                         </div>
-                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-dog-bowl-48.png') }}" alt="">
                             <h6 class="mt-3">Pet's Food</h6>
                         </div>
-                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-dog-house-48.png') }}" alt="">
                             <h6 class="mt-3">Habitat & Decor</h6>
                         </div>
-                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-grooming-48.png') }}" alt="">
                             <h6 class="mt-3">Grooming</h6>
                         </div>
-                        <div class="col-sm-4 col-md-2 mx-2 mb-5 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-scratching-post-48.png') }}" alt="">
                             <h6 class="mt-3">Pet Toys</h6>
                         </div>
@@ -269,22 +280,21 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
             </div>
         </div>
         @endif
-
         <main>
             @yield('content')
         </main>
         @include('auth.modals')
-        <footer class="bg-dark text-light container-fluid py-5">
+        <footer class="bg-dark text-light container-fluid py-4 py-sm-5">
             <div class="row">
-                <div class="col-3 px-5">
+                <div class="col-sm-6 mt-4 col-md-3 px-md-5">
                     <a class="d-inline mx-auto" href="{{ route('home') }}">
-                        <img class="w-50" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
+                        <img class="w-50 footer-logo" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                     </a>
                     <p class="mt-4">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-6 mt-4 col-md-2">
                     <h4>Categories</h4>
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -304,7 +314,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         </li>
                     </ul>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 mt-4 col-md-3">
                     <h4 class="mb-3">Our Stores</h4>
                     <h6>City Branch</h6>
                     <p>
@@ -315,13 +325,16 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         Office #00, Street 01, City, State Country.
                     </p>
                 </div>
-                <div class="col-4">
-                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42532.75081674089!2d73.11752598796942!3d31.451606581098375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242a895a55ca9%3A0xdec58f88932671c6!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1649609535792!5m2!1sen!2s" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="col-sm-6 mt-4 col-md-4">
+                    <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42532.75081674089!2d73.11752598796942!3d31.451606581098375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392242a895a55ca9%3A0xdec58f88932671c6!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1649609535792!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </footer>
     </div>
-
+    <div class="modals">
+        @include('layouts.modals')
+    </div>
+    
     <script src="{{ asset('js/script.js') }}" defer></script>
     @if(Auth::user())
     @include('scripts.notifications')

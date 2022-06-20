@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
@@ -59,4 +60,13 @@ Route::middleware('admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin_dashboard');
     Route::get('/notifications', [AdminController::class, 'notifications'])->name('admin_notifications');
     Route::post('/notifications', [NotificationController::class, 'store'])->name('create_notifications');
+});
+
+Route::middleware('auth')->prefix('ads')->group(function () {
+    Route::get('/my', [AdController::class, 'index'])->name('my_ads');
+    Route::get('/create', [AdController::class, 'create'])->name('create_ad');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 });
