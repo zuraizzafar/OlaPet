@@ -17,7 +17,7 @@ $user_type = array(
 </style>
 <div class="container py-md-5 shadow-lg bg-white mt-5 px-md-5 rounded-md profile-page-section">
     <div class="row align-items-start">
-        <div class="nav flex-column nav-pills col-sm-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <div class="nav flex-column nav-pills col-sm-3 mb-5 pb-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <button class="nav-link m-1 fw-bold text-start px-4 active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
                 <i class="fa-solid fa-user me-2"></i>
                 Profile

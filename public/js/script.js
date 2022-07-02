@@ -10,13 +10,20 @@ $(document).ready(function () {
         autoplayHoverPause: false,
         pagination: false
     });
+    ClassicEditor
+        .create(document.querySelector('.ckeditor'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+        })
+        .catch(error => {
+            console.error(error);
+        });
 })
 
-$('#min-price-range').change(function(){
+$('#min-price-range').change(function () {
     $('.value-min-price').text($(this).val());
 })
 
-$('#max-price-range').change(function(){
+$('#max-price-range').change(function () {
     $('.value-max-price').text($(this).val());
 })
 

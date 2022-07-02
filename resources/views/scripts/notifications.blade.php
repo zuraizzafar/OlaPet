@@ -24,6 +24,7 @@
                                     notification += '</li>';
                                     $('.notifification-dropdown.dropdown-menu').prepend(notification);
                                     $('.notification-bubble').css('display', 'block');
+                                    $('.notification-button i').addClass('fa-shake');
                                     $('.no-notifications').css('display', 'none');
                                     const Toast = Swal.mixin({
                                         toast: true,
@@ -38,7 +39,7 @@
                                     })
                                     Toast.fire({
                                         title: 'Notification',
-                                        text: data[i]['notification'].substring(0, 38)+(data[i]['notification'].length>=38 ? '...' : ''),
+                                        text: data[i]['notification'].substring(0, 38) + (data[i]['notification'].length >= 38 ? '...' : ''),
                                     })
                                 }
                             });
@@ -56,6 +57,7 @@
                 },
                 success: function(data) {
                     $('.notification-bubble').css('display', 'none');
+                    $('.notification-button i').removeClass('fa-shake');
                 }
             });
         });

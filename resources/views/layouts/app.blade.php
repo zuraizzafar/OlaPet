@@ -25,6 +25,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     @include('scripts.styles')
 </head>
 
@@ -72,7 +73,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
-                                <i class="fas fa-bell fs-4"></i>
+                                <i class="fas fa-bell fs-4 @if((strtotime($notifications[0]->updated_at))>=(strtotime(Auth::user()->notification_read_at))) fa-shake @endif"></i>
                                 <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if(!count($notifications)) style="display: none" @elseif((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif>
                                         <span class="visually-hidden">New alerts</span>
                                 </span>
@@ -334,7 +335,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
     <div class="modals">
         @include('layouts.modals')
     </div>
-    
+
     <script src="{{ asset('js/script.js') }}" defer></script>
     @if(Auth::user())
     @include('scripts.notifications')

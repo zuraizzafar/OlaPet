@@ -8,8 +8,6 @@ window.FilePond = FilePond;
 
 import 'jquery-ui/ui/widgets/datepicker.js';
 
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
-
 var ready = (callback) => {
   if (document.readyState != "loading") callback();
   else document.addEventListener("DOMContentLoaded", callback);
@@ -30,4 +28,4 @@ import "@lottiefiles/lottie-player/dist/lottie-player";
 
 import "chart.js/dist/chart";
 
-import "mdb-ui-kit/js/mdb.min"
+import "mdb-ui-kit/js/mdb.min";
