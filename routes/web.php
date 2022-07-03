@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use  App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +71,5 @@ Route::middleware('auth')->prefix('ads')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
 });
