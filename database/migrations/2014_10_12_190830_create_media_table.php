@@ -20,7 +20,7 @@ class CreateMediaTable extends Migration
             $table->string('name');
             $table->text('url');
             $table->string('alt');
-            $table->tinyInteger('type');
+            $table->tinyInteger('type')->default(1);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

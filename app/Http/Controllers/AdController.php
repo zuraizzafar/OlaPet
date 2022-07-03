@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Media;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -35,7 +39,49 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasfile('image'))
+            $file = $request->file('image');
+        $originalFileName = time() . $file->getClientOriginalName();
+        $multi_filePath = 'images' . '/' . $originalFileName;
+        Storage::disk('s3')->put($multi_filePath, file_get_contents($file));
+        $image = Media::create([
+            'name' => $originalFileName,
+            'user_id' => Auth::id(),
+            'url' => $multi_filePath,
+            'alt' => 'Alternate Message',
+        ]);
+
+        $ad = Ad::create([
+            'title' => $request->title,
+            'price' => $request->price,
+            'user_id' => Auth::id(),
+            'short_d' => $request->short_description,
+            'long_d' => $request->long_description,
+            'image' => $image->id,
+            'status' => 1,
+            'cat_id' => $request->category,
+        ]);
+
+        if ($request->hasfile('images')) {
+            $files = $request->file('images');
+
+            foreach ($files as $imgfile) {
+                try {
+                    $originalFileName = time() . $imgfile->getClientOriginalName();
+                    $multi_filePath = 'images' . '/' . $originalFileName;
+                    Storage::disk('s3')->put($multi_filePath, file_get_contents($imgfile));
+                    Media::create([
+                        'name' => $originalFileName,
+                        'user_id' => Auth::id(),
+                        'url' => $multi_filePath,
+                        'alt' => 'Alternate Message',
+                        'parent' => $ad->id,
+                    ]);
+                } catch (Exception $e) {
+                }
+            }
+        }
+        return $request;
     }
 
     /**

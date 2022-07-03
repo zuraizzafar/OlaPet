@@ -252,7 +252,7 @@ button.ad-sold-button {
 
 .choose-images-banner {
     background-color: #e7e7e7;
-    min-height: 350px;
+    height: 350px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -268,10 +268,87 @@ button.ad-sold-button {
     transform: translateY(-50%);
     z-index: 99;
     border-radius: 22px;
-    background-color: #4b4b4d;
+    background: linear-gradient(321deg, rgba(179,179,179,1) 0%, rgba(233,233,233,1) 90%);
+    background-color: rgb(179,179,179);
     color: white;
     border: 1px solid #e7e7e7;
-    padding: 72px;
+    padding: 84px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    transition: all 300ms;
+}
+
+.set-banner-ad > button > i {
+    position: relative;
+    z-index: 10;
+}
+
+.set-banner-ad > button:hover {
+    background-color: #dbdbdb;
+}
+
+.set-banner-ad > button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: rgba(0,0,0,0.25);
+}
+
+.ck-editor__editable_inline {
+    min-height: 350px !important;
+}
+
+#selected-images-banner .item {
+    flex: 1;
+    transition: all 700ms;
+}
+
+#selected-images-banner img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: all 500ms;
+    background: rgb(179,179,179);
+    background: linear-gradient(321deg, rgba(179,179,179,1) 0%, rgba(233,233,233,1) 90%);
+}
+
+#selected-images-banner img:hover {
+    border-radius: 10px;
+}
+
+#selected-images-banner .item:first-child img {
+    border-top-left-radius: 10px;
+}
+
+#selected-images-banner .item:last-child img {
+    border-top-right-radius: 10px;
+}
+
+#selected-images-banner {
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: inherit;
+}
+
+#selected-images-banner img:hover {
+    transform: scale(1.05);
+    width: 100%;
+}
+
+#selected-images-banner .item:hover {
+    flex-basis: 70%;
+    cursor: pointer;
+}
+
+#selected-images-banner .item:hover img {
+    object-fit: contain;
+    background: rgb(179,179,179);
+    background: linear-gradient(321deg, rgba(179,179,179,1) 0%, rgba(233,233,233,1) 90%);
 }
 
 @-webkit-keyframes animatebottom {

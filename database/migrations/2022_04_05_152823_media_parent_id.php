@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('media', function (Blueprint $table) {
-            $table->unsignedBigInteger('parent');
+            $table->unsignedBigInteger('parent')->nullable();
             $table->foreign('parent', 'parent_ad')->references('id')->on('ads')->onDelete('cascade');
-            $table->foreign('parent', 'parent_products')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

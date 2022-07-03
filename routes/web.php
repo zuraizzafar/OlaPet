@@ -65,6 +65,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/my', [AdController::class, 'index'])->name('my_ads');
     Route::get('/create', [AdController::class, 'create'])->name('create_ad');
+    Route::post('/create', [AdController::class, 'store'])->name('store_ad');
 });
 
 Route::middleware('auth')->group(function () {

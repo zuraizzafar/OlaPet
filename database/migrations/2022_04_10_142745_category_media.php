@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->unsignedBigInteger('icon');
-            $table->foreign('icon')->references('id')->on('media')->onDelete('cascade');
+            $table->foreign('icon')->references('id')->on('media')->onDelete('cascade')->nullable();
         });
     }
 
