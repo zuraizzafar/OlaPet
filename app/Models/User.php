@@ -100,6 +100,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\UserAddress', 'user_id', 'id');
     }
 
+    public function primary_address() {
+        return $this->hasOne('App\Models\UserAddress', 'user_id', 'id')->where('type', 1);
+    }
+
     public function wallet() {
         return $this->hasOne('App\Models\Wallet', 'user_id', 'id');
     }

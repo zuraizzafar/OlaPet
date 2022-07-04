@@ -1,7 +1,8 @@
 <div class="modal fade" id="addAddresses" tabindex="-1" aria-labelledby="addAddressesLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('create_address') }}">
+                @csrf
                 <div class="modal-header bg-primary">
                     <h5 class="modal-title text-white" id="addAddressesLabel">
                         <i class="fa-solid fa-location-dot me-2"></i>
@@ -13,41 +14,54 @@
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="title" class="form-label">Address Title</label>
-                            <input type="text" class="form-control" id="title" name="title">
+                            <input required type="text" class="form-control" id="title" name="title">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input required type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="address" class="form-label">Address</label>
+                            <input required type="text" class="form-control" id="address" name="address">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="street" class="form-label">Street Address</label>
-                            <input type="text" class="form-control" id="street" name="street">
+                            <input required type="text" class="form-control" id="street" name="street">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="postal" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="postal" name="postal">
+                            <input required type="text" class="form-control" id="postal" name="postal">
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="country" class="form-label">Country</label>
-                            <select type="text" class="form-control" id="country" name="country">
+                            <select required class="form-control" id="country" name="country">
                                 <option value="">Select Country</option>
+                                @foreach (App\Models\Country::all() as $country)
+                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="state" class="form-label">State</label>
-                            <select type="text" class="form-control" id="state" name="state">
+                            <select required class="form-control" id="state" name="state">
                                 <option value="">Select State</option>
+                                @foreach (App\Models\State::all() as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="city" class="form-label">City</label>
-                            <select type="text" class="form-control" id="city" name="city">
+                            <select required class="form-control" id="city" name="city">
                                 <option value="">Select City</option>
+                                @foreach (App\Models\City::all() as $city)
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone" name="phone">
+                            <input required type="tel" class="form-control" id="phone" name="phone">
                         </div>
                         <div class="mb-3 col-md-12">
                             <label for="notes" class="form-label">Notes</label>

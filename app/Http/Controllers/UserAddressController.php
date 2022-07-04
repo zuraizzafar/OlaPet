@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserAddressController extends Controller
 {
@@ -35,7 +36,22 @@ class UserAddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        UserAddress::create([
+            'title' => $request->title,
+            'name' => $request->name,
+            'address' => $request->address,
+            'street' => $request->street,
+            'postal_code' => $request->postal,
+            'type' => 1,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'phone' => $request->phone,
+            'notes' => $request->notes,
+            'user_id' => Auth::id(),
+            'status' => 1
+        ]);
+        return redirect()->route('profile');
     }
 
     /**
@@ -69,7 +85,27 @@ class UserAddressController extends Controller
      */
     public function update(Request $request, UserAddress $userAddress)
     {
-        //
+        // return $request;
+        if($request->primary=='on') {
+            UserAddress::where('user_id', Auth::id())->update([
+                'type' => 2
+            ]);
+        }
+        UserAddress::where('id',$request->id)->update([
+            'title' => $request->title,
+            'name' => $request->name,
+            'address' => $request->address,
+            'street' => $request->street,
+            'type' => $request->primary=='on'?1:2,
+            'postal_code' => $request->postal,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'phone' => $request->phone,
+            'notes' => $request->notes,
+            'user_id' => Auth::id(),
+        ]);
+        return redirect()->route('profile');
     }
 
     /**

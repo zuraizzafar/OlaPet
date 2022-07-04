@@ -41,10 +41,9 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                     <img style="width: 50%;" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}">
                 </a>
                 <div class="search-input d-none d-md-block col-md-4 col-lg-3">
-                    <form action="" class="search-ads-form">
-                        @csrf
+                    <form action="{{ route('search_ads') }}" class="search-ads-form">
                         <div class="input-group">
-                            <input type="text" class="form-control rounded-pill pe-5" placeholder="Search ads..." aria-label="Search">
+                            <input type="text" name="s" value="{{ isset($_GET['s'])?$_GET['s']:'' }}" class="form-control rounded-pill pe-5" placeholder="Search ads..." aria-label="Search">
                             <div class="input-group-append position-absolute end-0">
                                 <button class="btn btn-primary rounded-circle" type="button">
                                     <i class="fas fa-search"></i>
@@ -75,7 +74,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                             <a class="nav-link dropdown-toggle notification-button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
                                 <i class="fas fa-bell fs-4 @if((strtotime($notifications[0]->updated_at))>=(strtotime(Auth::user()->notification_read_at))) fa-shake @endif"></i>
                                 <span class="notification-bubble position-absolute top-0 start-50 translate-middle p-1 bg-danger border border-light rounded-circle" @if(!count($notifications)) style="display: none" @elseif((strtotime($notifications[0]->updated_at))<(strtotime(Auth::user()->notification_read_at))) style="display: none" @endif>
-                                        <span class="visually-hidden">New alerts</span>
+                                    <span class="visually-hidden">New alerts</span>
                                 </span>
                             </a>
 
@@ -118,7 +117,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto align-items-center flex-row justify-content-around">
-                        <li class="nav-item me-3">
+                        <!-- <li class="nav-item me-3">
                             <a class="nav-link" href="{{ route('ui_mode') }}" title="Switch Mode">
                                 @if($ui_mode=='dark')
                                 <i class="bi bi-brightness-high-fill fs-4 mx-1 lh-1"></i>
@@ -131,6 +130,16 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                             <a class="nav-link d-flex align-items-center" href="">
                                 <i class="fas fa-store fs-4 me-2"></i>
                                 {{ __('OlaPet Mall') }}
+                            </a>
+                        </li> -->
+                        <li class="nav-item d-md-none d-lg-inline-block">
+                            <a class="nav-link d-flex align-items-center fw-bold" href="javaScript:void(0)">
+                                {{ __('About') }}
+                            </a>
+                        </li>
+                        <li class="nav-item d-md-none d-lg-inline-block me-md-3">
+                            <a class="nav-link d-flex align-items-center fw-bold" href="javaScript:void(0)">
+                                {{ __('Contact') }}
                             </a>
                         </li>
                         <!-- Authentication Links -->
@@ -149,7 +158,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-circle-user fs-2"></i>
+                                <img class="rounded-circle" src="@if(Auth::user()->image!='') {{ Storage::disk('s3')->temporaryUrl(App\Models\Media::where('id', Auth::user()->image)->get()->first()->url, now()->addMinutes(5) ) }} @endif" style="width: 32px; height: 32px; object-fit: cover;">
                             </a>
 
                             <ul class="dropdown-menu profile-dropdown position-absolute dropdown-menu-end @if($ui_mode=='dark') {{ 'dropdown-menu-dark' }} @endif" aria-labelledby="navbarDropdown">
@@ -220,10 +229,10 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
             <div class="container-fluid bg-primary py-5">
                 <div class="row position-relative justify-content-center mx-auto w-100">
                     <div class="col-11 col-sm-10 col-md-6 banner-search mx-auto shadow p-3 p-sm-4">
-                        <form action="">
+                        <form action="{{ route('search_ads') }}">
                             <div class="row align-items-center">
                                 <div class="col-md-6 mb-3 mb-sm-0">
-                                    <input class="form-control shadow-sm px-3 py-2 px-sm-4 py-sm-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
+                                    <input name="s" class="form-control shadow-sm px-3 py-2 px-sm-4 py-sm-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <button type="button" class="btn py-2 py-sm-3 w-100 btn-light border shadow-sm fetch-location">
@@ -250,7 +259,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         <h5>
                             Shop for
                         </h5>
-                        <a href="#" class="text-white text-decoration-none">
+                        <a href="{{ route('search_ads') }}" class="text-white text-decoration-none">
                             Shop All
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>

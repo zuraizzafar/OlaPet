@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use  App\Http\Controllers\ChatController;
+use App\Http\Controllers\UserAddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+})->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
@@ -66,10 +67,18 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::middleware('auth')->prefix('ads')->group(function () {
     Route::get('/my', [AdController::class, 'index'])->name('my_ads');
     Route::get('/create', [AdController::class, 'create'])->name('create_ad');
-    Route::post('/create', [AdController::class, 'store'])->name('store_ad');
+    Route::post('/store', [AdController::class, 'store'])->name('store_ad');
+    Route::get('/', [AdController::class, 'all'])->name('search_ads');
+    Route::get('/ad-{id}', [AdController::class, 'show'])->name('single_ad');
+    Route::get('/edit/{id}', [AdController::class, 'edit'])->name('edit_ad');
+    Route::post('/update', [AdController::class, 'update'])->name('update_ad');
+    Route::post('/delete', [AdController::class, 'destroy'])->name('delete_ad');
+    Route::post('/sold', [AdController::class, 'sell'])->name('sold_to');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
-    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::post('/profile/update', [HomeController::class, 'profile_update'])->name('profile_update');
+    Route::post('/address/create', [UserAddressController::class, 'store'])->name('create_address');
+    Route::post('/address/update', [UserAddressController::class, 'update'])->name('update_address');
 });

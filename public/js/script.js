@@ -47,7 +47,6 @@ $(document).ready(function () {
             }
         }
     });
-
 })
 
 function readURL(input, target) {

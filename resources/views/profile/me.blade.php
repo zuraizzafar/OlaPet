@@ -1,15 +1,16 @@
 <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
     <h4 class="border-bottom mb-3"> Profile </h4>
-    <form action="" method="post">
+    <form action="{{ route('profile_update') }}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="row py-4">
             <div class="col-md-6 mb-3">
                 <div class="mb-3">
                     <label for="name" class="form-label text-black">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" placeholder="Enter Name...">
+                    <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" placeholder="Enter Name..." required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label text-black">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" placeholder="Enter Email...">
+                    <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" placeholder="Enter Email..." required>
                 </div>
                 <div class="mb-3">
                     <label class="fw-bold text-black d-block">
@@ -19,9 +20,9 @@
                 </div>
                 <div class="mb-4 justify-content-between d-flex align-items-center">
                     <span>Want to change password?</span>
-                    <button type="submit" class="btn btn-sm btn-info rounded-pill px-4">
+                    <a target="_blank" href="{{ route('password.request') }}" type="submit" class="btn btn-sm btn-info rounded-pill px-4">
                         Reset Password
-                    </button>
+                    </a>
                 </div>
                 <div class="justify-content-between d-flex">
                     <a type="{{ route('home') }}" class="btn btn-light rounded-pill col-md-5">Cancel</a>
@@ -47,8 +48,12 @@
                     </div>
                 </div>
                 @endif
-                <img class="shadow-lg w-50 rounded-circle border-0 mb-4" src="{{ asset('images/icons8-test-account-96.png') }}" alt="">
-                <input type="file" class="form-control mb-3 invisible" id="profile" name="profile">
+                <div class="set-banner-ad">
+                    <input required type="file" name="profile" id="ad_banner_image" class="d-none" accept="image/*">
+                    <button class="set-banner-for-ad rounded-circle shadow" style="transform: none; z-index: 0; @if(Auth::user()->image!='') background-image: url({{ Storage::disk('s3')->temporaryUrl(App\Models\Media::where('id', Auth::user()->image)->get()->first()->url, now()->addMinutes(5) ) }}) @endif">
+                        <i class="fa-solid fa-camera fa-3x"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </form>

@@ -21,11 +21,15 @@ class Ad extends Model
     ];
     
     public function user() {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'user_id')->with('primary_address');
     }
 
     public function category() {
         return $this->hasOne('App\Models\Category', 'id', 'cat_id');
+    }
+
+    public function sold() {
+        return $this->hasOne('App\Models\User', 'id', 'sold_to');
     }
 
     public function banner() {

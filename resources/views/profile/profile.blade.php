@@ -34,18 +34,18 @@ $user_type = array(
                 <i class="fa-solid fa-wallet me-2"></i>
                 Wallet
             </button>
-            <button class="nav-link m-1 fw-bold text-start px-4" id="v-pills-favorites-tab" data-bs-toggle="pill" data-bs-target="#v-pills-favorites" type="button" role="tab" aria-controls="v-pills-favorites" aria-selected="true">
+            <!-- <button class="nav-link m-1 fw-bold text-start px-4" id="v-pills-favorites-tab" data-bs-toggle="pill" data-bs-target="#v-pills-favorites" type="button" role="tab" aria-controls="v-pills-favorites" aria-selected="true">
                 <i class="fa-solid fa-heart me-2"></i>
-                Favorite Ads
-            </button>
+                Bought Ads
+            </button> -->
             <button class="nav-link m-1 fw-bold text-start px-4" id="v-pills-history-tab" data-bs-toggle="pill" data-bs-target="#v-pills-history" type="button" role="tab" aria-controls="v-pills-history" aria-selected="true">
                 <i class="fa-solid fa-clock-rotate-left me-2"></i>
                 History
             </button>
-            <button class="nav-link m-1 fw-bold text-start px-4" id="v-pills-followed-tab" data-bs-toggle="pill" data-bs-target="#v-pills-followed" type="button" role="tab" aria-controls="v-pills-followed" aria-selected="true">
+            <!-- <button class="nav-link m-1 fw-bold text-start px-4" id="v-pills-followed-tab" data-bs-toggle="pill" data-bs-target="#v-pills-followed" type="button" role="tab" aria-controls="v-pills-followed" aria-selected="true">
                 <i class="fa-solid fa-store me-2"></i>
                 Followed Stores
-            </button>
+            </button> -->
         </div>
         <div class="tab-content col-sm-9" id="v-pills-tabContent">
             @include('profile.me')

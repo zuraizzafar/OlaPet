@@ -12,7 +12,7 @@
                 </span>
                 <span class="fs-4 fw-bold d-block text-center">
                     <i class="fa-solid fa-rupee-sign"></i>
-                    25, 250
+                    {{ App\Models\Wallet::where('user_id', Auth::id())->get()->first()->balance }}
                 </span>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     </span>
                     <span class="fs-6 fw-bold d-block text-center">
                         <i class="fa-solid fa-rupee-sign"></i>
-                        5, 500
+                        0
                     </span>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     </span>
                     <span class="fs-6 fw-bold d-block text-center">
                         <i class="fa-solid fa-rupee-sign"></i>
-                        7, 500
+                        0
                     </span>
                 </div>
             </div>

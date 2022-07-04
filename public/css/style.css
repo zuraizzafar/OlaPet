@@ -171,7 +171,7 @@ div .select2-container {
     border-radius: 12px;
 }
 
-button.ad-delete-button {
+.ad-delete-button {
     outline: none;
     border: none;
     background: transparent;
@@ -194,7 +194,7 @@ button.ad-delete-button {
     color: white;
 }
 
-button.ad-edit-button {
+.ad-edit-button {
     outline: none;
     border: none;
     background: transparent;
@@ -212,7 +212,7 @@ button.ad-edit-button {
     transition: all 300ms;
 }
 
-button.ad-sold-button {
+.ad-sold-button {
     outline: none;
     border: none;
     background: transparent;
@@ -263,7 +263,7 @@ button.ad-sold-button {
     right: 22px;
 }
 
-.set-banner-ad > button {
+.set-banner-for-ad {
     position: relative;
     transform: translateY(-50%);
     z-index: 99;
@@ -279,16 +279,16 @@ button.ad-sold-button {
     transition: all 300ms;
 }
 
-.set-banner-ad > button > i {
+.set-banner-for-ad > i {
     position: relative;
     z-index: 10;
 }
 
-.set-banner-ad > button:hover {
+.set-banner-for-ad:hover {
     background-color: #dbdbdb;
 }
 
-.set-banner-ad > button::before {
+.set-banner-for-ad::before {
     content: '';
     position: absolute;
     left: 0;
@@ -349,6 +349,12 @@ button.ad-sold-button {
     object-fit: contain;
     background: rgb(179,179,179);
     background: linear-gradient(321deg, rgba(179,179,179,1) 0%, rgba(233,233,233,1) 90%);
+}
+
+.ad-card-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
 }
 
 @-webkit-keyframes animatebottom {
