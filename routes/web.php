@@ -82,3 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/address/create', [UserAddressController::class, 'store'])->name('create_address');
     Route::post('/address/update', [UserAddressController::class, 'update'])->name('update_address');
 });
+
+Route::get('/test', function() {
+    return view('testing');
+})->name('profile');

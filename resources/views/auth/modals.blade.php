@@ -113,7 +113,7 @@
                                         <span class="input-group-text">
                                             <i class="fas fa-user"></i>
                                         </span>
-                                        <input id="name" type="text" class="form-control my-0 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter your name..." required autocomplete="name" autofocus>
+                                        <input id="name" pattern="[a-zA-Z]+" title="Please enter a valid name" type="text" class="form-control my-0 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter your name..." required autocomplete="name" autofocus>
 
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">

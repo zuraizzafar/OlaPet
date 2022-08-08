@@ -47,7 +47,18 @@ $(document).ready(function () {
             }
         }
     });
+
+    $('.fetch-location').click(function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function() {
+                $('#fetched_location').val(1)
+            });
+        }
+    });
 })
+
+
+
 
 function readURL(input, target) {
     if (input.files && input.files[0]) {

@@ -107,11 +107,11 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                                 @endif
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="" title="Chats">
                                 <i class="fa-solid fa-comment-dots fs-4 mx-1"></i>
                             </a>
-                        </li>
+                        </li> -->
                         @endif
                     </ul>
 
@@ -132,7 +132,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                                 {{ __('OlaPet Mall') }}
                             </a>
                         </li> -->
-                        <li class="nav-item d-md-none d-lg-inline-block">
+                        <!-- <li class="nav-item d-md-none d-lg-inline-block">
                             <a class="nav-link d-flex align-items-center fw-bold" href="javaScript:void(0)">
                                 {{ __('About') }}
                             </a>
@@ -141,7 +141,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                             <a class="nav-link d-flex align-items-center fw-bold" href="javaScript:void(0)">
                                 {{ __('Contact') }}
                             </a>
-                        </li>
+                        </li> -->
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -232,6 +232,7 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         <form action="{{ route('search_ads') }}">
                             <div class="row align-items-center">
                                 <div class="col-md-6 mb-3 mb-sm-0">
+                                    <input type="hidden" id="fetched_location" name="location" value="">
                                     <input name="s" class="form-control shadow-sm px-3 py-2 px-sm-4 py-sm-3" type="text" placeholder="Type in keywords..." aria-label=".form-control-lg example">
                                 </div>
                                 <div class="col-6 col-md-3">
@@ -265,26 +266,26 @@ $notifications = Notification::where('status', 1)->whereIn('target', [Auth::user
                         </a>
                     </div>
                     <div class="row py-4 justify-content-between">
-                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        <a href="{{ route('search_ads') }}?cat_id=1" class="col-5 text-decoration-none text-dark col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-pet-commands-summon-48.png') }}" alt="">
                             <h6 class="mt-3">Find Pets</h6>
-                        </div>
-                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        </a>
+                        <a href="{{ route('search_ads') }}?cat_id=2" class="col-5 text-decoration-none text-dark col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-dog-bowl-48.png') }}" alt="">
                             <h6 class="mt-3">Pet's Food</h6>
-                        </div>
-                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        </a>
+                        <a href="{{ route('search_ads') }}?cat_id=3" class="col-5 text-decoration-none text-dark col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-dog-house-48.png') }}" alt="">
                             <h6 class="mt-3">Habitat & Decor</h6>
-                        </div>
-                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        </a>
+                        <a href="{{ route('search_ads') }}?cat_id=4" class="col-5 text-decoration-none text-dark col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-grooming-48.png') }}" alt="">
                             <h6 class="mt-3">Grooming</h6>
-                        </div>
-                        <div class="col-5 col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
+                        </a>
+                        <a href="{{ route('search_ads') }}?cat_id=5" class="col-5 text-decoration-none text-dark col-sm-4 col-md-2 mx-2 mb-md-0 mb-3 category-list-item p-2 text-center shadow border rounded bg-light py-4">
                             <img class="mx-auto" src="{{ asset('images/icons8-scratching-post-48.png') }}" alt="">
                             <h6 class="mt-3">Pet Toys</h6>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

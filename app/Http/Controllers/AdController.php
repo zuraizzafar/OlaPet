@@ -33,6 +33,7 @@ class AdController extends Controller
             ['title', 'like', '%' . $request->s . '%'],
             ['price', '>=', $l_price],
             ['price', '<=', $h_price],
+            ['cat_id', 'like', '%' . $request->cat_id . '%'],
         ])->orderBy('created_at', 'DESC')->get();
         return view('ads.search', compact('ads', 'request'));
     }
